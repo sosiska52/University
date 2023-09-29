@@ -167,14 +167,13 @@ int main()
     string name;
     cin >> name;
     Graph graph(name);
-
     graph.createAdjacencyMatrix();
     cout << "Enter staring vertex: ";
     int start;
     cin >> start;
-    vector <int> res = graph.eulerCycle(--start);
+    vector <int> res = graph.eulerCycle(start);
     showVector(res, "EulerCycle.txt");
-    res = graph.gamiltonCycle(--start);
+    res = graph.gamiltonCycle(start);
     showVector(res, "GamiltonCycle.txt");
     return 0;
 }
