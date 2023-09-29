@@ -1,0 +1,6 @@
+4 всего.
+N    Название:      
+1    Apricot        
+3    Coke           
+0    Meat           
+2    Milk           

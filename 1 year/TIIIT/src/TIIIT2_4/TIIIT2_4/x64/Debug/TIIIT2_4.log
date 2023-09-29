@@ -1,0 +1,4 @@
+﻿  Func.cpp
+E:\Visual Studio\vs projects\TIIIT2_4\TIIIT2_4\Func.cpp(6,15): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+E:\Visual Studio\vs projects\TIIIT2_4\TIIIT2_4\Func.cpp(37,22): warning C4244: =: преобразование "double" в "int", возможна потеря данных
+  TIIIT2_4.vcxproj -> E:\Visual Studio\vs projects\TIIIT2_4\x64\Debug\TIIIT2_4.exe

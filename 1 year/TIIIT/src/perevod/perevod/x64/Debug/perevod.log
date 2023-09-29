@@ -1,0 +1,4 @@
+﻿  perevod.cpp
+E:\Visual Studio\vs projects\perevod\perevod\perevod.cpp(25,47): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+E:\Visual Studio\vs projects\perevod\perevod\perevod.cpp(32,19): warning C4244: =: преобразование "double" в "int", возможна потеря данных
+  perevod.vcxproj -> E:\Visual Studio\vs projects\perevod\x64\Debug\perevod.exe

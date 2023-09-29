@@ -1,0 +1,3 @@
+﻿  oaip11.cpp
+E:\Visual Studio\vs projects\oaip11\oaip11\oaip11.cpp(63,10): warning C4101: temp: неиспользованная локальная переменная
+  oaip11.vcxproj -> E:\Visual Studio\vs projects\oaip11\x64\Debug\oaip11.exe

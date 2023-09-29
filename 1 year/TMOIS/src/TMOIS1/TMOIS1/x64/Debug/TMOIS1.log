@@ -1,0 +1,3 @@
+﻿  TMOIS1.cpp
+E:\Visual Studio\vs projects\TMOIS1\TMOIS1\TMOIS1.cpp(7,11): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
+  TMOIS1.vcxproj -> E:\Visual Studio\vs projects\TMOIS1\x64\Debug\TMOIS1.exe

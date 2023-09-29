@@ -1,0 +1,3 @@
+﻿  tiiit2_1.cpp
+E:\Visual Studio\vs projects\tiiit2_1\tiiit2_1\tiiit2_1.cpp(14,15): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+  tiiit2_1.vcxproj -> E:\Visual Studio\vs projects\tiiit2_1\x64\Debug\tiiit2_1.exe

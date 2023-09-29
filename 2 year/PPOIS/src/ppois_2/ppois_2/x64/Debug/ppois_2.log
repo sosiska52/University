@@ -1,0 +1,3 @@
+﻿  ppois_2.cpp
+E:\Visual Studio\vs projects\ppois_2\ppois_2\ppois_2.cpp(189,32): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
+  ppois_2.vcxproj -> E:\Visual Studio\vs projects\ppois_2\x64\Debug\ppois_2.exe
