@@ -97,6 +97,15 @@ public:
         ofstream fout;
         fout.open("Floyd.txt");
         int** temp = matrix;
+        for (int i = 0; i < numOfVertex; i++)
+            temp[i][i] = 0;
+
+        for (int i = 0; i < numOfVertex; i++) {
+            for (int j = 0; j < numOfVertex; j++) {
+                cout << temp[i][j] <<"\t";
+            }
+            cout << endl;
+        }
 
         for(int k = 0; k < numOfVertex; k++)
             for(int i = 0; i < numOfVertex; i++)
@@ -129,7 +138,6 @@ private:
     }
 
 };
-
 
 int main()
 {
