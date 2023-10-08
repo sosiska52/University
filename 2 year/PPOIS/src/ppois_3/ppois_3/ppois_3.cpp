@@ -221,6 +221,14 @@ public:
 
     Film getEpizode(int num) { return series[num]; }
 
+    void setName(string& newName){
+        nameLink = newName;
+    }
+
+    string getName() {
+        return nameLink;
+    }
+
     void copySeries(Film*& temp, int& tempSize) {
         for (int i = 0; i < size; i++) {
             temp[i] = series[i];
