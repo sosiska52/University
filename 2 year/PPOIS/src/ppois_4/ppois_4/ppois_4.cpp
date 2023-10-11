@@ -137,16 +137,9 @@ public:
         return name;
     }
 
-    void showAll() {
-        cout << name << " " << length << endl;
-        for (int i = 0; i < actors.size(); i++)
-            cout << actors[i] << " ";
-        cout << endl;
-    }
+    friend void showAll(const Film& film);
 
-    vector <string> getActors() {
-        return actors;
-    }
+    friend vector <string> getActors(Film& film);
 
     Film operator = (const Film& temp) {
         name = temp.name;
@@ -218,7 +211,7 @@ public:
     string getEpName(int num) {
         if (num >= size)
             return "ERROR";
-        return series[num].name;
+        return series[num].getName();
     }
 
     Film getEpizode(int num) { return series[num]; }
@@ -241,6 +234,17 @@ public:
         series[size - 1] = newEp;
     }
 };
+
+void showAll(const Film& film) {
+    cout << film.name << " " << film.length << endl;
+    for (int i = 0; i < film.actors.size(); i++)
+        cout << film.actors[i] << " ";
+    cout << endl;
+}
+
+vector <string> getActors(Film& film) {
+    return film.actors;
+}
 
 int main()
 {

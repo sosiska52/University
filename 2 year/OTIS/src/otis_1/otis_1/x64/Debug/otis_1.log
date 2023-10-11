@@ -1,3 +1,3 @@
 ﻿  otis_1.cpp
-E:\Visual Studio\vs projects\otis_1\otis_1\otis_1.cpp(33,12): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
-  otis_1.vcxproj -> E:\Visual Studio\vs projects\otis_1\x64\Debug\otis_1.exe
+E:\otisGIT\University\2 year\OTIS\src\otis_1\otis_1\otis_1.cpp(34,12): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
+  otis_1.vcxproj -> E:\otisGIT\University\2 year\OTIS\src\otis_1\x64\Debug\otis_1.exe

@@ -216,6 +216,7 @@ public:
     }
 
     ~Season() {
+        delete[] series;
         cout << "Deleting " << name << " Season with " << size << " epizodes" << endl;
     }
 
