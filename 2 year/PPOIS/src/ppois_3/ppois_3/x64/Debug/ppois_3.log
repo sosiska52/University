@@ -1,4 +1,1 @@
-﻿  ppois_3.cpp
-E:\otisGIT\University\2 year\PPOIS\src\ppois_3\ppois_3\ppois_3.cpp(260,42): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
-E:\otisGIT\University\2 year\PPOIS\src\ppois_3\ppois_3\ppois_3.cpp(261,46): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
-  ppois_3.vcxproj -> E:\otisGIT\University\2 year\PPOIS\src\ppois_3\x64\Debug\ppois_3.exe
+﻿  ppois_3.vcxproj -> E:\otisGIT\University\2 year\PPOIS\src\ppois_3\x64\Debug\ppois_3.exe
