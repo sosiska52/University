@@ -5,6 +5,7 @@
 using namespace std;
 
 class Graph {
+private:
 public:
     string name;
     int** matrix;
@@ -100,13 +101,6 @@ public:
         for (int i = 0; i < numOfVertex; i++)
             temp[i][i] = 0;
 
-        for (int i = 0; i < numOfVertex; i++) {
-            for (int j = 0; j < numOfVertex; j++) {
-                cout << temp[i][j] <<"\t";
-            }
-            cout << endl;
-        }
-
         for(int k = 0; k < numOfVertex; k++)
             for(int i = 0; i < numOfVertex; i++)
                 for (int j = 0; j < numOfVertex; j++) 
@@ -129,12 +123,14 @@ public:
 private:
     int findSmalest(vector <int> dist, vector <bool> isVisited) {
         int min = 999999;
+        int res = 0;
         for(int i = 0; i < dist.size();i++){
             if (dist[i] < min && !isVisited[i]) {
-                min = i;
+                min = dist[i];
+                res = i;
             }
         }
-        return min;
+        return res;
     }
 
 };
