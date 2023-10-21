@@ -97,28 +97,50 @@ public:
     void Floyd() {
         ofstream fout;
         fout.open("Floyd.txt");
+        ofstream ffout;
+        ffout.open("FloydPath.txt");
         int** temp = matrix;
+        int** path = new int*[numOfVertex];
         for (int i = 0; i < numOfVertex; i++)
+            path[i] = new int[numOfVertex];
+
+        for (int i = 0; i < numOfVertex; i++) {
             temp[i][i] = 0;
+            for (int j = 0; j < numOfVertex; j++) {
+                if (matrix[i][j] < 999999)
+                    path[i][j] = j;
+                else path[i][j] = -1;
+            }
+        }
 
         for(int k = 0; k < numOfVertex; k++)
             for(int i = 0; i < numOfVertex; i++)
                 for (int j = 0; j < numOfVertex; j++) 
-                    if (temp[i][k] + temp[k][j] < temp[i][j])
+                    if (temp[i][k] + temp[k][j] < temp[i][j]) {
                         temp[i][j] = temp[i][k] + temp[k][j];
+                        path[i][j] = path[i][k];
+                    }
 
         fout << "\t";
-        for (int i = 1; i <= numOfVertex; i++)
+        ffout << "\t";
+        for (int i = 1; i <= numOfVertex; i++) {
             fout << i << "\t";
+            ffout << i << "\t";
+        }
         fout << endl;
+        ffout << endl;
         for (int i = 0; i < numOfVertex; i++) {
             fout << i + 1 << "\t";
+            ffout << i + 1 << "\t";
             for (int j = 0; j < numOfVertex; j++) {
                 fout << temp[i][j] << "\t";
+                ffout << path[i][j] + 1 << "\t";
             }
             fout << endl;
+            ffout << endl;
         }
         fout.close();
+        ffout.close();
     }
 private:
     int findSmalest(vector <int> dist, vector <bool> isVisited) {
