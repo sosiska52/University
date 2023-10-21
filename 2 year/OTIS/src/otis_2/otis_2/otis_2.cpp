@@ -32,15 +32,15 @@ private:
 	double q1 = -k * (1 + 2 * td / t0 - t0 / t);
 	double q2 = k * td / t0;
 
-	void shift(double& a, double& b, double& c, double next) {
-		a = b;
-		b = c;
-		c = next;
+	void shift(double& x0, double& x1, double& x2, double next) const{
+		x0 = x1;
+		x1 = x2;
+		x2 = next;
 	}
 
-	void shift(double& a, double& b, double next) {
-		a = b;
-		b = next;
+	void shift(double& x0, double& x1, double next) const{
+		x0 = x1;
+		x1 = next;
 	}
 
 public:
@@ -63,10 +63,10 @@ public:
 			efout << i << " " << e2 << endl;
 			shift(e0, e1, e2, w - y1);
 			u = u1 + q0 * e2 + q1 * e1 + q2 * e0;
-			double next = a * y1 - b * y0 * y0 + c * u + d * sin(u1);
+			double next = a * y1 - b * y0 + c * u + d * sin(u1);
 			yfout << i << " " << y1 << endl;
 			shift(y0, y1, next);
-			ufout << i << " " << u1 << endl;;
+			ufout << i << " " << u1 << endl;
 			shift(u0, u1, u);
 			i++;
 		}
