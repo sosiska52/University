@@ -1,6 +1,5 @@
 ﻿#include <iostream>
 #include <cmath>
-#include <queue>
 #include <fstream>
 
 using namespace std;
@@ -13,11 +12,11 @@ private:
 	double d = 1.1;
 	double u = 4.1;
 
-	double k = 0.003;
-	double t = 100;
-	double td = 110;
+	double k = 1;
+	double t = 1.1;
+	double td = 1;
 	double t0 = 1;
-	double w = 20;
+	double w = 70;
 
 	double y0;
 	double y1;
@@ -33,13 +32,13 @@ private:
 	double q1 = -k * (1 + 2 * td / t0 - t0 / t);
 	double q2 = k * td / t0;
 
-	void shift(double a, double b, double c, double next) {
+	void shift(double& a, double& b, double& c, double next) {
 		a = b;
 		b = c;
 		c = next;
 	}
 
-	void shift(double a, double b, double next) {
+	void shift(double& a, double& b, double next) {
 		a = b;
 		b = next;
 	}
@@ -49,41 +48,37 @@ public:
 		ofstream yfout;
 		yfout.open("y.txt");
 		ofstream ufout;
-		yfout.open("u.txt");
+		ufout.open("u.txt");
 		ofstream efout;
-		yfout.open("e.txt");
+		efout.open("e.txt");
 		int i = 0;
 		y0 = prev;
 		y1 = cur;
 		e0 = 0;
-		e1 = 0;
-		e2 = 0;
+		e1 = w - prev;
+		e2 = w - cur;
 		u0 = 1;
 		u1 = 1;
-		while (abs(w - y1) > 0.5 && i < 20) {
-			//cout << w - y1 << endl;
-			cout << i << " " << e2 << endl;
-			cout <<"::"<< e0 << " " << e1 << " " << e2 << endl;
+		while (abs(w - y1) > 0.01) {
+			efout << i << " " << e2 << endl;
 			shift(e0, e1, e2, w - y1);
-			cout <<"::"<< e0 << " " << e1 << " " << e2 << endl;
 			u = u1 + q0 * e2 + q1 * e1 + q2 * e0;
 			double next = a * y1 - b * y0 * y0 + c * u + d * sin(u1);
-			cout << i << " " << y1 << endl;
+			yfout << i << " " << y1 << endl;
 			shift(y0, y1, next);
-			cout << i << " " << u1 << endl;;
+			ufout << i << " " << u1 << endl;;
 			shift(u0, u1, u);
 			i++;
 		}
-		cout << i;
+		yfout.close();
+		ufout.close();
+		efout.close();
 	}
 };
 
-
-
-
 int main()
 {
-	double cur = 0.6;
+	double cur = 0.9;
 	double prev = 0.3;
 	Function func;
 	func.func(cur, prev);
