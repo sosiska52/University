@@ -1,0 +1,9 @@
+From	To	Weight
+3	5	2
+6	8	2
+2	3	3
+4	6	3
+5	8	3
+1	4	4
+6	7	5
+Weight of a tree: 22
