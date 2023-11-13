@@ -167,18 +167,17 @@ public:
         fout << "From\tTo\tWeight" << endl;
         int sum = 0;
         int counter = 0;
+
         while (counter < numOfVertex - 1) {
             Edge minEdge = findMinEdge(matrix, isVisited);
             ost[minEdge.from][minEdge.to] = minEdge.weight;
             ost[minEdge.to][minEdge.from] = minEdge.weight;
             isVisited[minEdge.from][minEdge.to] = true;
             if (BFScycle(ost)) {
-                cout << "check2: found cycle" << endl;
                 ost[minEdge.from][minEdge.to] = 0;
                 ost[minEdge.to][minEdge.from] = 0;
             }
             else {
-                cout << "check2: no cycle" << endl;
                 sum += minEdge.weight;
                 fout << minEdge.from + 1 << "\t" << minEdge.to + 1 << "\t" << minEdge.weight << endl;
                 counter++;
@@ -190,9 +189,12 @@ public:
 };
 
 int main() {
-    string name = "input.txt";
+    string name;
+    cout << "Enter file name: ";
+    cin >> name;
     Graph graph(name);
     graph.makePrima();
     graph.makeKruskal();
 	return 0;
+
 }

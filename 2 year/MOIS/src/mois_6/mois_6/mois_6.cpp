@@ -5,6 +5,13 @@
 
 using namespace std;
 
+template<typename T>
+void printVector(vector <T> vec) {
+    for (int i = 0; i < vec.size(); i++)
+        cout << vec[i] << " ";
+    cout << endl;
+}
+
 class Graph {
 private:
     string name;
@@ -96,6 +103,36 @@ private:
         }
         fout.close();
     }
+
+    void TarjanDFS(int u, vector<int>& disc, vector<int>& low, vector<int>& parent, vector<bool>& articulationPoint, vector <pair<int, int>>& bridge)
+    {
+        static int time = 0;
+        disc[u] = low[u] = time;
+        time++; 
+        int children = 0;
+
+        for (int v = 0; v < numOfVertex; v++)
+        {
+            if (disc[v] == -1 && matrix[u][v])
+            {
+                children++;
+                parent[v] = u;
+                TarjanDFS(v, disc, low, parent, articulationPoint, bridge);
+                low[u] = min(low[u], low[v]);
+
+                if (parent[u] == -1 and children > 1)
+                    articulationPoint[u] = true;
+
+                if (parent[u] != -1 and low[v] >= disc[u])
+                    articulationPoint[u] = true;
+
+                if (low[v] > disc[u])
+                    bridge.push_back({u, v});
+            }
+            else if (v != parent[u] && matrix[u][v])
+                low[u] = min(low[u], disc[v]);
+        }
+    }
 public:
     Graph(string name, bool isOriented) {
         this->name = name;
@@ -107,17 +144,15 @@ public:
         for (int i = 0; i < numOfVertex; i++)
             matrix[i] = new int[numOfVertex];
 
-        for (int i = 0; i < numOfVertex; i++) {
-            for (int j = 0; j < numOfVertex; j++) {
+        for (int i = 0; i < numOfVertex; i++)
+            for (int j = 0; j < numOfVertex; j++) 
                 matrix[i][j] = 0;
-            }
-        }
 
         for (int i = 0; i < numOfEdge; i++) {
             int from, to;
             fin >> from >> to;
             matrix[from - 1][to - 1] = 1;
-            if(!isOriented)
+            if (!isOriented)
                 matrix[to - 1][from - 1] = 1;
         }
 
@@ -129,22 +164,41 @@ public:
         fout << endl;
         for (int i = 0; i < numOfVertex; i++) {
             fout << i + 1 << "\t";
-            for (int j = 0; j < numOfVertex; j++) {
+            for (int j = 0; j < numOfVertex; j++) 
                 fout << matrix[i][j] << "\t";
-            }
             fout << endl;
         }
         fout.close();
         fin.close();
     }
 
-    void createSSC() {
-
+    void findSSC() {
+        //сорямба за код лооол
         stack <int> mainStack;
 
         fillStack(mainStack);
 
         printSSCs(mainStack);
+    }
+
+    void findArtPointsAndBridges() {
+        vector<int> disc(numOfVertex, -1), low(numOfVertex, -1), parent(numOfVertex, -1);
+        vector<bool> articulationPoint(numOfVertex, false);
+        vector <pair<int, int>> bridge;
+
+        for (int i = 0; i < numOfVertex; i++)
+            if (disc[i] == -1)
+                TarjanDFS(i, disc, low, parent, articulationPoint, bridge);
+
+        ofstream fout("ArticulationPointsAndBridges.txt");
+        fout << "Articulation Points are: ";
+        for (int i = 0; i < numOfVertex; i++)
+            if (articulationPoint[i] == true)
+                fout << i + 1 << " ";
+        fout << "\nBridges are: ";
+        for (int i = 0; i < bridge.size(); i++)
+            fout << "(" << bridge[i].first + 1 << " , " << bridge[i].second + 1 << ") ";
+        fout.close();
     }
 };
 
@@ -157,6 +211,7 @@ int main()
     bool isOriented;
     cin >> isOriented;
     Graph graph(name, isOriented);
-    graph.createSSC();
+    //graph.findSSC();
+    graph.findArtPointsAndBridges();
     return 0;
 }
