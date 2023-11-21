@@ -70,7 +70,7 @@ private:
         }
     }
 
-    void printSSCs(stack <int>& mainStack) {
+    void printSCCs(stack <int>& mainStack) {
         ofstream fout("SSCs.txt");
         vector<bool> isVisited(numOfVertex, false);
         while (!mainStack.empty()) {
@@ -172,13 +172,13 @@ public:
         fin.close();
     }
 
-    void findSSC() {
+    void findSCC() {
         //сорямба за код лооол
         stack <int> mainStack;
 
         fillStack(mainStack);
 
-        printSSCs(mainStack);
+        printSCCs(mainStack);
     }
 
     void findArtPointsAndBridges() {
@@ -211,7 +211,7 @@ int main()
     bool isOriented;
     cin >> isOriented;
     Graph graph(name, isOriented);
-    //graph.findSSC();
+    graph.findSCC();
     graph.findArtPointsAndBridges();
     return 0;
 }
