@@ -20,6 +20,17 @@ mqID = mq_open("/testmQueue1", O_RDWR | O_CREAT | O_EXCL, 0666,NULL);
 		}
 	}
 	
+	for (int i = 1; i <= 5; ++i){
+	int num = (rand() % 100) + 1;	
+	char msg[4];
+	sprintf(msg, "%d", num);
+		if (mq_send(mqID, msg, sizeof(msg), i) < 0){
+			printf("send message %d failed \n", i);
+		}
+	printf("send message %d success \n",i); 
+	sleep(1);
+}
+	
 	if (fork() == 0){
 		struct mq_attr mqAttr;
 		mq_getattr(mqID, &mqAttr);
@@ -42,15 +53,6 @@ mqID = mq_open("/testmQueue1", O_RDWR | O_CREAT | O_EXCL, 0666,NULL);
 		exit(0);
 	}
 
-for (int i = 1; i <= 5; ++i){
-	int num = (rand() % 100) + 1;	
-	char msg[4];
-	sprintf(msg, "%d", num);
-		if (mq_send(mqID, msg, sizeof(msg), i) < 0){
-			printf("send message %d failed \n", i);
-		}
-	printf("send message %d success \n",i); 
-	sleep(1);
-}
+
 }
 
