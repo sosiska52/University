@@ -1,0 +1,4 @@
+Element 1 generates ( 1 ) subgroup with order = 1
+Element 2 generates ( 1 2 3 4 ) subgroup with order = 4
+Element 3 generates ( 1 2 3 4 ) subgroup with order = 4
+Element 4 generates ( 1 4 ) subgroup with order = 2
