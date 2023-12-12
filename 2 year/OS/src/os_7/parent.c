@@ -37,8 +37,10 @@ sem_post(full);
 }
 
 sem_close(full);
-sem_close(mutex);
+sem_close(empty);
+sem_close(temp);
 sem_unlink(sem_full);
 sem_unlink(sem_empty);
+sem_unlink(sem_temp);
 return 0;
 }

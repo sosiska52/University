@@ -6,9 +6,12 @@
 #include <sys/msg.h>
 #include <sys/sem.h>
 #include <unistd.h>
+#include <time.h>
+#include <stdlib.h>
 #define buf 1
 int main()
 {
+srand(time(0));
 char symbol;
 int value;
 int sum = 0;
@@ -32,15 +35,19 @@ sem_getvalue(temp, &num);
 value = num - sum;
 sum += value;
 symbol = (char)value;
-
-printf("Got symbol: %c \n", symbol);
+printf("Got symbol: ");
+for(int i = 0; i < rand()%10;i++)
+printf("%c ", symbol);
+printf("\n");
 sem_post(empty);
 }
 
 sem_close(full);
 sem_close(empty);
+sem_close(temp);
 sem_unlink(sem_full);
 sem_unlink(sem_empty);
+sem_unlink(sem_temp);
 return 0;
 }
 
