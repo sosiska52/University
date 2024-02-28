@@ -1,0 +1,12 @@
+﻿  mois_9.cpp
+E:\otisGIT\University\2 year\MOIS\src\mois_9\mois_9\mois_9.cpp(26,23): warning C4018: <=: несоответствие типов со знаком и без знака
+E:\otisGIT\University\2 year\MOIS\src\mois_9\mois_9\mois_9.cpp(34,5): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+E:\otisGIT\University\2 year\MOIS\src\mois_9\mois_9\mois_9.cpp(36,25): warning C4244: =: преобразование "double" в "unsigned __int64", возможна потеря данных
+E:\otisGIT\University\2 year\MOIS\src\mois_9\mois_9\mois_9.cpp(140,35): warning C4267: аргумент: преобразование из "size_t" в "_Ty"; возможна потеря данных
+          with
+          [
+              _Ty=int
+          ]
+E:\otisGIT\University\2 year\MOIS\src\mois_9\mois_9\mois_9.cpp(141,5): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+E:\otisGIT\University\2 year\MOIS\src\mois_9\mois_9\mois_9.cpp(156,32): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+  mois_9.vcxproj -> E:\otisGIT\University\2 year\MOIS\src\mois_9\x64\Debug\mois_9.exe
