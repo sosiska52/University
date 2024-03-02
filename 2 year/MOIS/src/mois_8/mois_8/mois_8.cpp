@@ -8,85 +8,86 @@
 #include <sstream>
 #include <ctime>
 
-std::wstring convertToWstring(const std::string& str) {
-	std::wstring_convert<std::codecvt_utf8<wchar_t>> converter;
-	return converter.from_bytes(str);
-}
-
-void placeMagaradga(int i1, int j1, std::vector<std::vector<int>> &matrix, int length) {
-	for (int i = 0; i < length; i++) {
-		matrix[i1][i] = 1;
-		matrix[i][j1] = 1;
-		for (int j = 0; j < length; j++) {
-			if (std::abs(i - i1) == std::abs(j - j1)) {
-				matrix[i][j] = 1;
-			}
-			if ((std::abs(i - i1) == 2 && std::abs(j - j1) == 1) ||
-				(std::abs(i - i1) == 1 && std::abs(j - j1) == 2)) {
-				matrix[i][j] = 1;
-			}
-		}
-	}
-
-	matrix[i1][j1] = 2;
-}
-
-void tryMagaradga(int i1, int j1, std::vector<std::vector<int>> matrix, int length, const std::string folderPath) {
-	placeMagaradga(i1, j1, matrix, length);
-	
-	for (int i = 0; i < length; i++) {
-		for (int j = 0; j < length; j++) {
-			if (matrix[i][j] == 0)
-				placeMagaradga(i, j, matrix, length);
-		}
-	}
-
-	std::string fileName = std::to_string(i1) + "-" + std::to_string(j1) + ".txt";
+void printBoard(std::vector <std::vector<int>> matrix) {
 	std::ofstream fout;
-	fout.open(folderPath + "\\" + fileName);
-	for (int i = 0; i < length; i++) {
-		for (int j = 0; j < length; j++) {
-			if (matrix[i][j] == 1)
+	fout.open("Magaradga_" + std::to_string(matrix.size()) + ".txt");
+
+	for (int i = 0; i < matrix.size(); i++) {
+		for (int j = 0; j < matrix.size(); j++)
+			if (matrix[i][j])
+				fout << "M ";
+			else
 				fout << "* ";
-			else fout << "M ";
-		}
 		fout << "\n";
 	}
 	fout.close();
 }
 
-void makeMagaradga(int length) {
-	std::vector<std::vector<int>> matrix(length, std::vector<int>(length, 0)); //matrix filled with 0
+bool isValid(std::vector<std::vector<int>> matrix, int row, int col) {
+	for (int i = 0; i < col; i++) //check whether there is queen in the left or not
+		if (matrix[row][i])
+			return false;
+	for (int i = row, j = col; i >= 0 && j >= 0; i--, j--)
+		if (matrix[i][j]) //check whether there is queen in the left upper diagonal or not
+			return false;
+	for (int i = row, j = col; j >= 0 && i < matrix.size(); i++, j--)
+		if (matrix[i][j]) //check whether there is queen in the left lower diagonal or not
+			return false;
 
-	//creating folder name
-	std::string tempName = "E:\\otisGIT\\University\\2 year\\MOIS\\src\\mois_8\\mois_8\\Magaradga_" + std::to_string(length);
-	const std::wstring folderPath = convertToWstring(tempName);
+	int size = matrix.size();
 
-	//trying all starting possitions
-	if (CreateDirectoryW(folderPath.c_str(), NULL)) {
-		clock_t start = clock();
+	// Позиции, на которых может находиться конь
+	int knightRow[] = { -2, -2, -1, -1, 1, 1, 2, 2 };
+	int knightCol[] = { -1, 1, -2, 2, -2, 2, -1, 1 };
 
-		for (int i = 0; i < length; i++) {
-			for (int j = 0; j < length; j++) {
-				tryMagaradga(i, j, matrix, length, tempName);
+	for (int k = 0; k < 8; k++) {
+		int nextRow = row + knightRow[k];
+		int nextCol = col + knightCol[k];
+
+		// Проверяем, что следующая позиция находится в пределах доски
+		if (nextRow >= 0 && nextRow < size && nextCol >= 0 && nextCol < size) {
+			// Проверяем, есть ли на следующей позиции конь
+			if (matrix[nextRow][nextCol] == 1) {
+				return false;
 			}
 		}
+	}
+
+	return true;
+}
+
+bool tryMagaradga( int j1, std::vector<std::vector<int>>& matrix, int length) {
+	if (j1 >= length) //when N queens are placed successfully
+		return true;
+	for (int i = 0; i < length; i++) { //for each row, check placing of queen is possible or not
+		if (isValid(matrix, i, j1)) {
+			matrix[i][j1] = 1; //if validate, place the queen at place (i, col)
+			if (tryMagaradga(j1 + 1, matrix, length)) //Go for the other columns recursively
+				return true;
+			matrix[i][j1] = 0;
+		}
+	}
+	return false; //when no possible order is found
+}
+
+double makeMagaradga(int length) {
+	std::vector<std::vector<int>> matrix(length, std::vector<int>(length, 0)); //matrix filled with 0
+
+		clock_t start = clock();
+
+		if (!tryMagaradga(0, matrix, length)) {
+			std::cout << "Solution doesn't exist.\n";
+			return 0;
+		}
+		//else std::cout << length << " DONE\n";
+		else printBoard(matrix);
 
 		clock_t end = clock();
 		double elapsedTime = static_cast<double>(end - start) / CLOCKS_PER_SEC; // Вычисляем прошедшее время в секундах
 
-		std::cout << "Time passed: " << elapsedTime << " secconds.\n Created " << length * length << "files\n";
-	}
-	else {
-		DWORD errorCode = GetLastError();
-		if (errorCode == ERROR_ALREADY_EXISTS) {
-			std::cout << "Folder already exist\n";
-		}
-		else {
-			std::cout << "Didn't succesed. Error code: " << errorCode <<"\n";
-		}
-	}
+		std::cout << "Time passed: " << elapsedTime << " secconds.\n\n";
 
+		return elapsedTime;
 }
 
 void menu() {
