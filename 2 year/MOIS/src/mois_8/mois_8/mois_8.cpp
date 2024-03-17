@@ -24,19 +24,18 @@ void printBoard(std::vector <std::vector<int>> matrix) {
 }
 
 bool isValid(std::vector<std::vector<int>> matrix, int row, int col) {
-	for (int i = 0; i < col; i++) //check whether there is queen in the left or not
+	for (int i = 0; i < col; i++) 
 		if (matrix[row][i])
 			return false;
 	for (int i = row, j = col; i >= 0 && j >= 0; i--, j--)
-		if (matrix[i][j]) //check whether there is queen in the left upper diagonal or not
+		if (matrix[i][j])
 			return false;
 	for (int i = row, j = col; j >= 0 && i < matrix.size(); i++, j--)
-		if (matrix[i][j]) //check whether there is queen in the left lower diagonal or not
+		if (matrix[i][j]) 
 			return false;
 
 	int size = matrix.size();
 
-	// Позиции, на которых может находиться конь
 	int knightRow[] = { -2, -2, -1, -1, 1, 1, 2, 2 };
 	int knightCol[] = { -1, 1, -2, 2, -2, 2, -1, 1 };
 
@@ -57,7 +56,7 @@ bool isValid(std::vector<std::vector<int>> matrix, int row, int col) {
 }
 
 bool tryMagaradga( int j1, std::vector<std::vector<int>>& matrix, int length) {
-	if (j1 >= length) //when N queens are placed successfully
+	if (j1 >= length) 
 		return true;
 	for (int i = 0; i < length; i++) { //for each row, check placing of queen is possible or not
 		if (isValid(matrix, i, j1)) {
@@ -67,7 +66,7 @@ bool tryMagaradga( int j1, std::vector<std::vector<int>>& matrix, int length) {
 			matrix[i][j1] = 0;
 		}
 	}
-	return false; //when no possible order is found
+	return false; 
 }
 
 double makeMagaradga(int length) {
@@ -79,11 +78,10 @@ double makeMagaradga(int length) {
 			std::cout << "Solution doesn't exist.\n";
 			return 0;
 		}
-		//else std::cout << length << " DONE\n";
 		else printBoard(matrix);
 
 		clock_t end = clock();
-		double elapsedTime = static_cast<double>(end - start) / CLOCKS_PER_SEC; // Вычисляем прошедшее время в секундах
+		double elapsedTime = static_cast<double>(end - start) / CLOCKS_PER_SEC; 
 
 		std::cout << "Time passed: " << elapsedTime << " secconds.\n\n";
 
