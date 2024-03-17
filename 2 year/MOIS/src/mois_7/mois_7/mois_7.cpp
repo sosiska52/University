@@ -20,17 +20,17 @@ private:
         }
     };
 
-    int heigh(vertex* root) {
-            if (root == NULL) {
+    int heigh(vertex* cur) {
+            if (cur == NULL) {
                 return 0;
             }
-            else if (root->left == NULL && root->right == NULL) {
+            else if (cur->left == NULL && cur->right == NULL) {
                 return 0;
             }
-            else if (heigh(root->left) > heigh(root->right))
-                return heigh(root->left) + 1;
+            else if (heigh(cur->left) > heigh(cur->right))
+                return heigh(cur->left) + 1;
             else
-                return heigh(root->right) + 1;
+                return heigh(cur->right) + 1;
     }
 
     std::string getSubtreeString(vertex* node, std::string prefix = "") {
@@ -168,6 +168,19 @@ public:
         }
 
     }
+
+    bool isBalanced(vertex* cur) {
+        if (root == NULL)
+            return true;
+
+        int leftHeight = heigh(cur->left);
+        int rightHeight = heigh(cur->right);
+
+        if (abs(leftHeight - rightHeight) <= 1)
+            return true;
+
+        return false;
+    }
 };
 
 void menu() {
@@ -188,7 +201,8 @@ void menu() {
         std::cout << "2)Check for isomorphism\n";
         std::cout << "3)Delete vertex\n";
         std::cout << "4)Add vertex\n";
-        std::cout << "5)Exit\n";
+        std::cout << "5)Show height and check if balansed\n";
+        std::cout << "6)Exit\n";
 
         std::cin >> choise;
         switch (choise)
@@ -248,6 +262,36 @@ void menu() {
 
             break;
         case 5:
+            system("cls");
+
+            /*
+            std::cout << tree1.height(tree1.root) << "\n";
+            std::cout << tree1.height(tree1.root->left) << "\n";
+            std::cout << tree1.height(tree1.root->right) << "\n";
+            */
+
+            std::cout << "Chose tree: ";
+            int choise6;
+            std::cin >> choise6;
+
+            if (choise6 == 1) {
+                system("cls");
+                std::cout << "Height: " << tree1.height() << "\n";
+                if (tree1.isBalanced(tree1.root))
+                    std::cout << "The tree is balansed\n";
+                else
+                    std::cout << "The tree is not balansed\n";
+            }
+            else if (choise6 == 2) {
+                system("cls");
+                std::cout << "Height: " << tree2.height() << "\n";
+                if (tree2.isBalanced(tree2.root))
+                    std::cout << "The tree is balansed\n";
+                else
+                    std::cout << "The tree is not balansed\n";
+            }
+            break;
+        case 6:
             return;
         default:
             system("cls");
