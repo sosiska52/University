@@ -1,0 +1,6 @@
+﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(517,5): warning MSB8028: промежуточный каталог (x64\Debug\) содержит файлы, которые используются совместно с другим проектом (ConsoleApplication1.vcxproj).  Это может привести к ошибкам очистки и перестроения.
+  ConsoleApplication1.cpp
+  HashTable.cpp
+E:\otisGIT\University\2 year\AOIS\src\ConsoleApplication1\ConsoleApplication1\HashTable.cpp(43,19): warning C4244: return: преобразование "double" в "int", возможна потеря данных
+  Создание кода...
+  ConsoleApplication1.vcxproj -> E:\otisGIT\University\2 year\AOIS\src\ConsoleApplication1\x64\Debug\aois_1.exe
