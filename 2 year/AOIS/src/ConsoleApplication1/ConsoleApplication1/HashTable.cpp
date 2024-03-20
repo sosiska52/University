@@ -1,5 +1,6 @@
 #include "HashTable.h"
 #include <cmath>
+#include <fstream>
 
 HashTable::Dog::Dog() {
 	name = "NULL";
@@ -43,6 +44,14 @@ int HashTable::hashF(std::string key) {
 	return std::trunc(N * normHashAdress);
 }
 
+int HashTable::collisionHelper(int start, std::string key){
+	for (int i = start; i < N; i++) {
+		if (table[i].name == key)
+			return i;
+	}
+	return -1;
+}
+
 void HashTable::addData(std::string name, std::string breed, int age) {
 	if (name != "NULL" || name != "") {
 		int index = hashF(name);
@@ -62,21 +71,25 @@ bool HashTable::tryAdd(int ind, std::string name, std::string breed, int age) {
 	else if (ind + 1 == N)
 		return true;
 	else {
-		for (int i = ind + 1; i < N; i++) {
-			if (table[i].name == "NULL") {
-				table[i] = Dog(name, breed, age);
-				numOfData++;
-				return false;
-			}
+		int i = collisionHelper(ind, "NULL");
+		if (i != -1) {
+			table[i] = Dog(name, breed, age);
+			numOfData++;
+			return false;
 		}
 	}
 	return true;
 }
 
 void HashTable::getData(std::vector<BasicTable::Dog> basicTable) {
+	std::ofstream fout("grafik.txt");
+
 	for (int i = 0; i < N; i++) {
 			addData(basicTable[i].name, basicTable[i].breed, basicTable[i].age);
+
+			fout << numOfData << " " << numOfCollisions << "\n";
 	}
+	fout.close();
 }
 
 int HashTable::searchData(std::string key) {
@@ -85,15 +98,8 @@ int HashTable::searchData(std::string key) {
 	if (table[ind].name == key) {
 		return ind;
 	}
-	else {
-		for (int i = ind + 1; i < N; i++) {
-			numOfSearchTries++;
-			if (table[i].name == key) {
-				return i;
-			}
-		}
-	}
-	return -1;
+	else 
+		return collisionHelper(ind + 1, key);
 }
 
 void HashTable::deleteData(std::string key) {
@@ -107,7 +113,8 @@ void HashTable::deleteData(std::string key) {
 void HashTable::redactData(std::string key, std::string name, std::string breed, int age) {
 	int ind = searchData(key);
 	if (ind) {
-		table[ind] = Dog(name, breed, age);
+		table[ind] = Dog();
+		addData(name, breed, age);
 	}
 }
 
@@ -115,4 +122,8 @@ void HashTable::chanceOfColision() {
 	std::cout << "Chance of collision: " << numOfCollisions / numOfData << "\n";
 	std::cout << "Average num of search tries: " << numOfSearchTries / numOfData << "\n";
 	numOfSearchTries = 0;
+}
+
+HashTable::Dog HashTable::showData(int ind){
+	return table[ind];
 }

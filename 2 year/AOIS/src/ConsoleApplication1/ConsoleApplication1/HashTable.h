@@ -22,6 +22,7 @@ public:
 	int searchData(std::string);
 	void redactData(std::string key, std::string name, std::string breed, int age);
 	void chanceOfColision();
+	Dog showData(int ind);
 private:
 	int N;
 	double numOfCollisions;
@@ -31,4 +32,5 @@ private:
 	std::vector <Dog> table;
 	int hashF(std::string key);
 	bool tryAdd(int ind, std::string name, std::string breed, int age);
+	int collisionHelper(int start, std::string key);
 };
