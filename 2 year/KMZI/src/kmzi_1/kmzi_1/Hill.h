@@ -4,26 +4,29 @@
 #include <vector>
 #include <string>
 #include <random>
-#include <Eigen/Dense>
 class Hill {
 private:
 	int size;
 	int numOfLetters;
 	char fillerLetter;
 	char textLimiter;
-	std::vector<std::vector <int>> key;
+	std::vector<std::vector <int>> enkey;
+	std::vector<std::vector <int>> dekey;
 
-	int getAlphabetPosition(char letter);
 	int getRandomNumber();
 
 	std::vector<int> transformToNumbers(std::string);
-	std::vector<int> encrypt(std::vector<int>);
+	std::vector<int> encrypt(std::vector<int>, bool);
 	void saveEncryptedText(std::string, std::vector<int>);
+	void cleanFile(std::string);
+	int getAlphabetPosition(char letter);
+	char getAlphabetLetter(int num);
 
+	void cryptText(std::string& path, bool mode);
 
 public:
 	Hill();
 	void encryptText(std::string& path);
-	void decryptText(std::string& path);;
+	void decryptText(std::string& path);
 };
 

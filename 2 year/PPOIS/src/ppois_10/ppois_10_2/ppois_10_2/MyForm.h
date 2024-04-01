@@ -82,7 +82,7 @@ namespace ppois102 {
             // 
             this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
             this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-            this->ClientSize = System::Drawing::Size(813, 539);
+            this->ClientSize = System::Drawing::Size(428, 236);
             this->Name = L"MyForm";
             this->Text = L"MyForm";
             this->ResumeLayout(false);

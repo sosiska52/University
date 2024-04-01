@@ -127,10 +127,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Haffman.cpp" />
     <ClCompile Include="Hill.cpp" />
     <ClCompile Include="kmzi_1.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Huffman.h" />
     <ClInclude Include="Hill.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

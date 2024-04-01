@@ -2,3 +2,7 @@ E:\otisGIT\University\2 year\PPOIS\src\ppois_10_2\ppois_10_2\x64\Debug\ppois_10_
 E:\otisGIT\University\2 year\PPOIS\src\ppois_10_2\ppois_10_2\x64\Debug\ppois_10_2.vcxproj.SuggestedBindingRedirects.cache
 E:\otisGIT\University\2 year\PPOIS\src\ppois_10_2\ppois_10_2\x64\Debug\ppois102.MyForm.resources
 E:\otisGIT\University\2 year\PPOIS\src\ppois_10_2\ppois_10_2\x64\Debug\ppois_10_2.vcxproj.GenerateResource.cache
+E:\otisGIT\University\2 year\PPOIS\src\ppois_10\ppois_10_2\ppois_10_2\x64\Debug\ppois_10_2.vcxproj.AssemblyReference.cache
+E:\otisGIT\University\2 year\PPOIS\src\ppois_10\ppois_10_2\ppois_10_2\x64\Debug\ppois_10_2.vcxproj.SuggestedBindingRedirects.cache
+E:\otisGIT\University\2 year\PPOIS\src\ppois_10\ppois_10_2\ppois_10_2\x64\Debug\ppois102.MyForm.resources
+E:\otisGIT\University\2 year\PPOIS\src\ppois_10\ppois_10_2\ppois_10_2\x64\Debug\ppois_10_2.vcxproj.GenerateResource.cache
