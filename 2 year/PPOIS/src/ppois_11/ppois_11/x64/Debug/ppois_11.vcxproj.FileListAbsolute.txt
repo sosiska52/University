@@ -1,0 +1,4 @@
+E:\otisGIT\University\2 year\PPOIS\src\ppois_11\ppois_11\x64\Debug\ppois_11.vcxproj.AssemblyReference.cache
+E:\otisGIT\University\2 year\PPOIS\src\ppois_11\ppois_11\x64\Debug\ppois_11.vcxproj.SuggestedBindingRedirects.cache
+E:\otisGIT\University\2 year\PPOIS\src\ppois_11\ppois_11\x64\Debug\ppois11.MyForm2.resources
+E:\otisGIT\University\2 year\PPOIS\src\ppois_11\ppois_11\x64\Debug\ppois_11.vcxproj.GenerateResource.cache
