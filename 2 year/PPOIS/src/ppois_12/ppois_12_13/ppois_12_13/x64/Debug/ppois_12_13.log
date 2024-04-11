@@ -1,0 +1,5 @@
+﻿  MyForm.cpp
+E:\otisGIT\University\2 year\PPOIS\src\ppois_12_13\ppois_12_13\MyForm.h(56,53): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+E:\otisGIT\University\2 year\PPOIS\src\ppois_12_13\ppois_12_13\MyForm.h(56,50): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+  MyForm.obj : обнаружен модуль MSIL; для MSIL последовательная компоновка отключена; выполняется полная компоновка
+  ppois_12_13.vcxproj -> E:\otisGIT\University\2 year\PPOIS\src\ppois_12_13\x64\Debug\ppois_12_13.exe
