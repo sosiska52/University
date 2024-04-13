@@ -1,0 +1,8 @@
+E:\otisGIT\University\2 year\PPOIS\src\ppois_12_9\ppois_12_9\x64\Debug\ppois_12_9.vcxproj.AssemblyReference.cache
+E:\otisGIT\University\2 year\PPOIS\src\ppois_12_9\ppois_12_9\x64\Debug\ppois_12_9.vcxproj.SuggestedBindingRedirects.cache
+E:\otisGIT\University\2 year\PPOIS\src\ppois_12\ppois_12_9\ppois_12_9\x64\Debug\ppois_12_9.vcxproj.AssemblyReference.cache
+E:\otisGIT\University\2 year\PPOIS\src\ppois_12\ppois_12_9\ppois_12_9\x64\Debug\ppois_12_9.vcxproj.SuggestedBindingRedirects.cache
+E:\otisGIT\University\2 year\PPOIS\src\ppois_14\ppois_12_9\ppois_12_9\x64\Debug\ppois_12_9.vcxproj.AssemblyReference.cache
+E:\otisGIT\University\2 year\PPOIS\src\ppois_14\ppois_12_9\ppois_12_9\x64\Debug\ppois_12_9.vcxproj.SuggestedBindingRedirects.cache
+E:\otisGIT\University\2 year\PPOIS\src\ppois_14\ppois_12_9\ppois_12_9\x64\Debug\ppois129.MyForm.resources
+E:\otisGIT\University\2 year\PPOIS\src\ppois_14\ppois_12_9\ppois_12_9\x64\Debug\ppois_12_9.vcxproj.GenerateResource.cache
