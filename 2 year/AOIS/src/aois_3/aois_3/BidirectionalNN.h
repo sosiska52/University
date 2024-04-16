@@ -9,12 +9,12 @@ private:
 	std::vector<std::vector<int>> Weight;
 	std::vector<std::vector<int>> WeightTransposed;
 
+	std::vector<std::vector<int>> multiplyMatrices(const std::vector<std::vector<int>>& matrix1, const std::vector<std::vector<int>>& matrix2);
 	std::vector<std::vector<int>> transposeMatrix(std::vector<std::vector<int>>);
-	void roundVector(std::vector<int>&);
-	void test(std::vector<std::vector<int>> XT, std::vector<std::vector<int>> Y);
+	std::vector<std::vector<int>> roundVector(std::vector<std::vector<int>>);
 public:
 	BidirectionalNN(int n, int m);
-	void predict(bool mode, std::vector<int>);
+	std::vector<std::vector<int>> function(bool mode, std::vector<std::vector<int>>);
 	void initializeWeight(std::vector<std::vector<int>> X, std:: vector<std::vector<int>> Y);
 };
 

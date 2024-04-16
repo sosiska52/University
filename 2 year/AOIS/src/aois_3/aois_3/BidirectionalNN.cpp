@@ -7,16 +7,19 @@ BidirectionalNN::BidirectionalNN(int n, int m) {
 	WeightTransposed = std::vector<std::vector<int>>(n, std::vector<int>(m, 0));
 }
 
-void BidirectionalNN::roundVector(std::vector<int>& vec) {
-	for (int i = 0; i < vec.size(); i++) {
-		if (vec[i] > 1)
-			vec[i] = 1;
-		if (vec[i] < -1)
-			vec[i] = -1;
-	}
+std::vector<std::vector<int>> BidirectionalNN::roundVector(std::vector<std::vector<int>> vec) {
+	std::vector<std::vector<int>> res = vec;
+	for (int i = 0; i < vec.size(); i++)
+		for (int j = 0; j < vec[i].size(); j++) {
+			if (res[i][j] > 1)
+				res[i][j] = 1;
+			if (res[i][j] < -1)
+				res[i][j] = -1;
+		}
+	return res;
 }
 
-std::vector<std::vector<int>> multiplyMatrices(const std::vector<std::vector<int>>& matrix1, const std::vector<std::vector<int>>& matrix2) {
+std::vector<std::vector<int>> BidirectionalNN::multiplyMatrices(const std::vector<std::vector<int>>& matrix1, const std::vector<std::vector<int>>& matrix2) {
     if (matrix1.empty() || matrix2.empty() || matrix1[0].size() != matrix2.size()) {
         return {}; 
     }
@@ -50,4 +53,11 @@ void BidirectionalNN::initializeWeight(std::vector<std::vector<int>> X, std::vec
 	X = transposeMatrix(X);
 	Weight = multiplyMatrices(X, Y);
 	WeightTransposed = transposeMatrix(Weight);
+}
+
+std::vector<std::vector<int>> BidirectionalNN::function(bool mode, std::vector<std::vector<int>> startVector) {
+	if (mode) // true - find Y
+		return roundVector(multiplyMatrices(startVector, Weight));
+	else
+		return roundVector(multiplyMatrices(startVector, WeightTransposed));
 }
