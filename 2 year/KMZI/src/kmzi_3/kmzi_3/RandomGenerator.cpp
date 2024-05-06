@@ -39,7 +39,6 @@ int RandomGenerator::calculateNewX(int x0) {
 		return c;
     else {
         int inverse = findMultiplicativeInverse(x0);
-        std::cout << x0 << " inverted: " << inverse << "\n";
         if (inverse != -1)
             return (a * inverse + c) % N;
         else

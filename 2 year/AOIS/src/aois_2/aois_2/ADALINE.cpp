@@ -1,25 +1,7 @@
 #include "ADALINE.h"
 
 double ADALINE::function(double x) {
-	return 3 * std::sin(x * 7) + 0.3;
-}
-
-void ADALINE::save() {
-	std::ofstream fout("weight.txt");
-	for (int i = 0; i < W.size(); i++) {
-		fout << W[i] << " ";
-	}
-	fout << T;
-	fout.close();
-}
-
-void ADALINE::load() {
-	std::ifstream fin("weight.txt");
-	for (int i = 0; i < W.size(); i++) {
-		fin >> W[i];
-	}
-	fin >> T;
-	fin.close();
+	return 4 * std::sin(x * 7) + 0.2;
 }
 
 double ADALINE::getRandomNumber() {
@@ -58,34 +40,6 @@ void ADALINE::adjustThreshhold(double Y, double referense) {
 double ADALINE::calculateError(double Y, double referense) {
 	return 0.5 * std::pow(Y - referense, 2);
 }
-/*
-void ADALINE::train(std::vector <std::vector<std::pair<double, double>>> trainSample) {
-	std::ofstream fout("train.txt");
-
-	int ind = 0;
-	X = trainSample[ind];
-	double reference = function(X[n - 1].first + 0.1);
-	double Y = calculateY();
-
-	while (calculateError(Y, reference) > minMistake && ind < trainSample.size() - 1) {
-		fout << ind << " " << calculateError(Y, reference) << "\n";
-		std::cout << std::setw(5) << std::left << ind
-			<< std::setw(13) << std::left << reference
-			<< std::setw(13) << std::left << Y
-			<< std::setw(13) << std::left << calculateError(Y, reference) << "\n";
-
-		ind++;
-		X = trainSample[ind];
-
-		reference = function(X[n - 1].first + 0.1);
-		Y = calculateY();
-
-		for (int i = 0; i < W.size(); i++)
-			adjustWeight(i, Y, reference);
-		adjustThreshhold(Y, reference);
-	}
-	fout.close();
-}*/
 
 void ADALINE::train(std::vector <std::vector<std::pair<double, double>>> trainSample) {
 	for (int i = 0; i < trainSample.size(); i++) {
