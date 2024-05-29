@@ -1,5 +1,2 @@
-﻿  Cache.cpp
-E:\otisGIT\University\2 year\AOIS\src\aois_7\aois_7\Cache.cpp(7,20): warning C4244: =: преобразование "double" в "int", возможна потеря данных
-E:\otisGIT\University\2 year\AOIS\src\aois_7\aois_7\Cache.cpp(99): warning C4715: Cache::find: значение возвращается не при всех путях выполнения
-E:\otisGIT\University\2 year\AOIS\src\aois_7\aois_7\Cache.cpp(65): warning C4715: Cache::find: значение возвращается не при всех путях выполнения
+﻿  aois_7.cpp
   aois_7.vcxproj -> E:\otisGIT\University\2 year\AOIS\src\aois_7\x64\Debug\aois_7.exe
