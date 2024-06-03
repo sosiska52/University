@@ -18,19 +18,41 @@ public:
 		}
 	};
 private:
-	std::vector<int> sizeOfLayer;
-	std::vector<std::vector<double>> neuronVal;
-	void activationFunc(std::vector<double>& vec);
-	double activationDer(double num);
-	void activationDer(std::vector<double>& vec);
+	/*
+	std::vector<double> inputNeuron;
+	std::vector<std::vector<double>> hidenNeuron1;
+	std::vector<std::vector<double>> hidenNeuron2;
+	std::vector<double> outputNeuron;
 
-	void givePicture(Mnist_data image);
+	std::vector<std::vector<double>> kernel1;
+	std::vector<std::vector<double>> kernel2;
+	*/
+
+	std::vector<std::vector<double>> inputNeuron;
+	std::vector<std::vector<std::vector<double>>> hidenNeuron1;
+	std::vector<std::vector<std::vector<double>>> hidenNeuron2;
+	std::vector<double> outputNeuron;
+
+	std::vector<std::vector<std::vector<double>>> kernel1;
+	std::vector<std::vector<std::vector<double>>> kernel2;
+
+	void ReLUFunc(std::vector<double>& vec);
+	double ReLUDer(double num);
+	void ReLUDer(std::vector<double>& vec);
+
+	void givePicture(Mnist_data& image);
 	int findMaxOutput();
 
 	double maxPooling();
-
+	void backPropogation(double expected, double alph);
 public:
 	ConvNetwork();
+
+	int predict(Mnist_data&);
+
+	void train(std::vector<Mnist_data>& images);
+	void test(std::vector<Mnist_data>& images);
+
 	void saveWeight();
 	void loadWeight();
 };

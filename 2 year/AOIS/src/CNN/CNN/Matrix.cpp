@@ -28,7 +28,6 @@ std::vector<double> Matrix::multiplyMatrixVector(const std::vector<std::vector<d
 
     return result;
 }
-
 std::vector<double> Matrix::multiplyMatrixVector_T(const std::vector<std::vector<double>>& matrix, const std::vector<double>& vector) {
     // ѕроверка на корректность размеров матрицы и вектора
     int num_rows = matrix.size();
@@ -50,9 +49,26 @@ std::vector<double> Matrix::multiplyMatrixVector_T(const std::vector<std::vector
     return result;
 }
 
+std::vector<double> Matrix::extractSubMatrix(const std::vector<double>& matrix, int matrixRows, int matrixCols, int startRow, int startCol, int length) {
+    if (startRow < 0 || startRow + length > matrixRows || startCol < 0 || startCol + length > matrixCols) {
+        // ѕровер€ем, что запрашиваема€ подматрица находитс€ в пределах основной матрицы
+        std::cout << "EXTRACTING ERROR\n";
+        return {};
+    }
+
+    std::vector<double> subMatrix(length * length);
+
+    for (int i = 0; i < length; ++i) {
+        for (int j = 0; j < length; ++j) {
+            subMatrix[i * length + j] = matrix[(startRow + i) * matrixCols + startCol + j];
+        }
+    }
+
+    return subMatrix;
+}
 std::vector<std::vector<double>> Matrix::extractSubMatrix(const std::vector<std::vector<double>>& matrix, int startRow, int startCol, int length) {
     if (startRow < 0 || startRow + length > matrix.size() || startCol < 0 || startCol + length > matrix[0].size()) {
-        std::cout << "ERROR EXTRACTING\n";
+        // ѕровер€ем, что запрашиваема€ подматрица находитс€ в пределах основной матрицы
         return {};
     }
 
@@ -65,4 +81,35 @@ std::vector<std::vector<double>> Matrix::extractSubMatrix(const std::vector<std:
     }
 
     return subMatrix;
+}
+
+double Matrix::convolute(const std::vector<double>& matrix1, const std::vector<double>& matrix2, int length) {
+    double result = 0;
+
+    for (int i = 0; i < length; ++i) {
+        for (int j = 0; j < length; ++j) {
+            int sum = 0;
+            for (int k = 0; k < length; ++k) {
+                sum += matrix1[i * length + k] * matrix2[k * length + j];
+            }
+            result += sum;
+        }
+    }
+
+    return result;
+}
+double Matrix::convolute(const std::vector<std::vector<double>>& matrix1, const std::vector<std::vector<double>>& matrix2) {
+    double sum = 0;
+
+    for (int i = 0; i < matrix1.size(); ++i) {
+        for (int j = 0; j < matrix1[i].size(); ++j) {
+            double tempSum = 0;
+            for (int k = 0; k < matrix1[i].size(); ++k) {
+                tempSum += matrix1[i][k] * matrix2[k][j];
+            }
+            sum += tempSum;
+        }
+    }
+
+    return sum;
 }
