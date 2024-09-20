@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\GitHubRepo\\University\\3 year\\KMZI\\kmzi_1.1\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{2DF0623C-281F-4C8D-879E-374EC8A632B8}|kmzi_1.1\\kmzi_1.1.vcxproj|D:\\GitHubRepo\\University\\3 year\\KMZI\\kmzi_1.1\\kmzi_1.1\\kmzi_1.1.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{2DF0623C-281F-4C8D-879E-374EC8A632B8}|kmzi_1.1\\kmzi_1.1.vcxproj|solutionrelative:kmzi_1.1\\kmzi_1.1.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "kmzi_1.1.cpp",
+              "DocumentMoniker": "D:\\GitHubRepo\\University\\3 year\\KMZI\\kmzi_1.1\\kmzi_1.1\\kmzi_1.1.cpp",
+              "RelativeDocumentMoniker": "kmzi_1.1\\kmzi_1.1.cpp",
+              "ToolTip": "D:\\GitHubRepo\\University\\3 year\\KMZI\\kmzi_1.1\\kmzi_1.1\\kmzi_1.1.cpp",
+              "RelativeToolTip": "kmzi_1.1\\kmzi_1.1.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFIAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-09-13T11:13:18.035Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
