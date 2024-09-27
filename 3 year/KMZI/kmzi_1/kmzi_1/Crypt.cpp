@@ -1,74 +1,57 @@
 //#include "Crypt.h"
 //
-//std::string generateNonce(size_t length) {
-//    unsigned char buffer[32]; // Достаточно для 256-битного nonce
-//    if (RAND_bytes(buffer, length) != 1) {
-//        throw std::runtime_error("Ошибка генерации случайного числа");
-//    }
 //
-//    // Преобразуем в строку в шестнадцатичном формате
-//    std::ostringstream oss;
-//    for (size_t i = 0; i < length; ++i) {
-//        oss << std::hex << std::setw(2) << std::setfill('0') << static_cast<int>(buffer[i]);
-//    }
-//    return oss.str();
-//}
-//
-//CryptUser::CryptUser(Role role) {
-//    this->userRole = role;
-//    this->nonce = generateNonce(16);
-//    publicKey = generateRSAKey(2048);
-//}
-//
-//RSA* CryptUser::generateRSAKey(int bits) {
-//    RSA* rsa = RSA_generate_key(bits, RSA_F4, nullptr, nullptr);
-//    if (!rsa) handleErrors();
-//    return rsa;
-//}
-//
-//void CryptUser::handleErrors() {
+//void handleErrors() {
 //    ERR_print_errors_fp(stderr);
 //    abort();
 //}
 //
-//std::string CryptUser::encryptKey(RSA* spKey) {
-//    std::string encrypted(RSA_size(spKey), '\0');
-//    std::string message = "secretmessageB";
-//    int result = RSA_public_encrypt(message.size(), (unsigned char*)message.c_str(),
-//        (unsigned char*)encrypted.data(), spKey, RSA_PKCS1_OAEP_PADDING);
-//    if (result == -1) handleErrors();
-//    return encrypted;
-//}
-//
-//std::string CryptUser::decryptKey(RSA* spKey, std::string encryptedR) {
-//    std::string decrypted(RSA_size(spKey), '\0');
-//    int result = RSA_private_decrypt(encryptedR.size(), (unsigned char*)encryptedR.c_str(),
-//        (unsigned char*)decrypted.data(), spKey, RSA_PKCS1_OAEP_PADDING);
-//    if (result == -1) handleErrors();
-//    decrypted.resize(result); 
-//    return decrypted;
-//}
-//
-//void CryptUser::makeSharedKey(std::string data) {
-//    if (this->userRole == SENDER) {
-//        data = "secretkeyA" + data;
-//        unsigned char hash[SHA256_DIGEST_LENGTH];
-//        SHA256((unsigned char*)data.c_str(), data.size(), hash);
-//        this->sharedKey = std::string((char*)hash, SHA256_DIGEST_LENGTH);
-//    }
-//    else {
-//        unsigned char hash[SHA256_DIGEST_LENGTH];
-//        SHA256((unsigned char*)data.c_str(), data.size(), hash);
-//        this->sharedKey = std::string((char*)hash, SHA256_DIGEST_LENGTH);
+//Client::Client(std::string name) : name(name) {
+//    int flag = 0;
+//    sharedKey = std::vector<unsigned char>(keySize);
+//    publicKey = std::vector<unsigned char>(keySize);
+//    flag += RAND_bytes(sharedKey.data(), sharedKey.size());
+//    flag += RAND_bytes(publicKey.data(), publicKey.size());
+//    if (flag != 2) {
+//        std::cerr << "Error generating random key." << std::endl;
 //    }
 //}
 //
-//bool CryptUser::connect(CryptUser sender, CryptUser reciever) {
-//    std::string result = reciever.encryptKey(sender.sendKey());
-//    std::string res = sender.decryptKey(reciever.sendKey(), result);
-//    std::cout << res << "\n";
+//void Client::syncSharedKey(Client& client) {
+//    this->sharedKey = client.sharedKey;
 //}
 //
-//RSA* CryptUser::sendKey() {
-//    return this->publicKey;
+//std::vector<unsigned char> Client::sendEpK() {
+//
+//    EVP_CIPHER_CTX* ctx = EVP_CIPHER_CTX_new();
+//    if (!ctx) {
+//        std::cout << "Failed to create context." << std::endl;
+//        return {}; // Возврат пустого вектора при ошибке
+//    }
+//
+//    if (EVP_EncryptInit_ex(ctx, EVP_des_ecb(), nullptr, sharedKey.data(), nullptr) != 1) {
+//        handleErrors();
+//        EVP_CIPHER_CTX_free(ctx);
+//        return {};
+//    }
+//
+//    std::vector<unsigned char> output(publicKey.size() + EVP_CIPHER_block_size(EVP_des_ecb()));
+//    int len = 0;
+//
+//    if (EVP_EncryptUpdate(ctx, output.data(), &len, publicKey.data(), publicKey.size()) != 1) {
+//        handleErrors();
+//        EVP_CIPHER_CTX_free(ctx);
+//        return {};
+//    }
+//
+//    int final_len = 0;
+//    if (EVP_EncryptFinal_ex(ctx, output.data() + len, &final_len) != 1) {
+//        handleErrors();
+//        EVP_CIPHER_CTX_free(ctx);
+//        return {};
+//    }
+//
+//    output.resize(len + final_len);
+//    EVP_CIPHER_CTX_free(ctx);
+//    return output;
 //}

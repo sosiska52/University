@@ -5,14 +5,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{35EF507D-79EF-4E4B-92C4-2220EFB7C653}|kmzi_1\\kmzi_1.vcxproj|D:\\GitHubRepo\\University\\3 year\\KMZI\\kmzi_1\\kmzi_1\\kmzi_1.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{35EF507D-79EF-4E4B-92C4-2220EFB7C653}|kmzi_1\\kmzi_1.vcxproj|solutionrelative:kmzi_1\\kmzi_1.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{35EF507D-79EF-4E4B-92C4-2220EFB7C653}|kmzi_1\\kmzi_1.vcxproj|D:\\GitHubRepo\\University\\3 year\\KMZI\\kmzi_1\\kmzi_1\\Crypt.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{35EF507D-79EF-4E4B-92C4-2220EFB7C653}|kmzi_1\\kmzi_1.vcxproj|solutionrelative:kmzi_1\\Crypt.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{35EF507D-79EF-4E4B-92C4-2220EFB7C653}|kmzi_1\\kmzi_1.vcxproj|D:\\GitHubRepo\\University\\3 year\\KMZI\\kmzi_1\\kmzi_1\\Crypt.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{35EF507D-79EF-4E4B-92C4-2220EFB7C653}|kmzi_1\\kmzi_1.vcxproj|solutionrelative:kmzi_1\\Crypt.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,46 +14,20 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Crypt.h",
-              "DocumentMoniker": "D:\\GitHubRepo\\University\\3 year\\KMZI\\kmzi_1\\kmzi_1\\Crypt.h",
-              "RelativeDocumentMoniker": "kmzi_1\\Crypt.h",
-              "ToolTip": "D:\\GitHubRepo\\University\\3 year\\KMZI\\kmzi_1\\kmzi_1\\Crypt.h",
-              "RelativeToolTip": "kmzi_1\\Crypt.h",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAAAgAAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-09-13T08:39:43.935Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Crypt.cpp",
-              "DocumentMoniker": "D:\\GitHubRepo\\University\\3 year\\KMZI\\kmzi_1\\kmzi_1\\Crypt.cpp",
-              "RelativeDocumentMoniker": "kmzi_1\\Crypt.cpp",
-              "ToolTip": "D:\\GitHubRepo\\University\\3 year\\KMZI\\kmzi_1\\kmzi_1\\Crypt.cpp",
-              "RelativeToolTip": "kmzi_1\\Crypt.cpp",
-              "ViewState": "AgIAACsAAAAAAAAAAAAmwEkAAAADAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-09-13T08:39:26.747Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "kmzi_1.cpp",
               "DocumentMoniker": "D:\\GitHubRepo\\University\\3 year\\KMZI\\kmzi_1\\kmzi_1\\kmzi_1.cpp",
               "RelativeDocumentMoniker": "kmzi_1\\kmzi_1.cpp",
-              "ToolTip": "D:\\GitHubRepo\\University\\3 year\\KMZI\\kmzi_1\\kmzi_1\\kmzi_1.cpp",
-              "RelativeToolTip": "kmzi_1\\kmzi_1.cpp",
-              "ViewState": "AgIAAEsAAAAAAAAAAAAAAFcAAAApAAAAAAAAAA==",
+              "ToolTip": "D:\\GitHubRepo\\University\\3 year\\KMZI\\kmzi_1\\kmzi_1\\kmzi_1.cpp*",
+              "RelativeToolTip": "kmzi_1\\kmzi_1.cpp*",
+              "ViewState": "AgIAAGgAAAAAAAAAAAAmwJIAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-09-12T06:58:33.774Z",
+              "IsPinned": true,
               "EditorCaption": ""
             }
           ]

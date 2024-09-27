@@ -1,102 +1,155 @@
-﻿#include <iostream>
-#include <openssl/evp.h>
+﻿#define _CRT_SECURE_NO_WARNINGS
+#include <openssl/applink.c>
+#include <string>
+#include <vector>
+#include <iomanip>
+#include <iostream>
 #include <openssl/rand.h>
-#include <openssl/sha.h>
-#include <openssl/hmac.h>
-#include <string.h>
+#include <openssl/evp.h>
+#include <openssl/err.h>
+
+void handleErrors() {
+    ERR_print_errors_fp(stderr);
+    abort();
+}
 
 class Client {
 public:
-    Client(const std::string& username, const std::string& password)
-        : username(username), password(password) {}
+    const int keySize = 16; // AES-128
+    std::string name;
+    std::vector<unsigned char> publicKey; // K'
+    std::vector<unsigned char> sharedKey; // P
+    std::vector<unsigned char> sessionKey; // K
 
-    bool connect(Client& other) {
-        // Этап 1: Генерация случайного числа
-        unsigned char A[16];
-        RAND_bytes(A, sizeof(A));
-
-        // Этап 2: Хэширование пароля
-        unsigned char passwordHash[SHA256_DIGEST_LENGTH];
-        SHA256((unsigned char*)password.c_str(), password.size(), passwordHash);
-
-        // Этап 3: Формирование общего ключа
-        unsigned char K[16];
-        for (int i = 0; i < sizeof(K); ++i) {
-            K[i] = A[i] ^ passwordHash[i % SHA256_DIGEST_LENGTH];
-        }
-
-        // Этап 4: Отправка A и K другому клиенту
-        std::cout << username << " connected to " << other.username << std::endl;
-        other.receive(A, K);
-        return true;
-    }
-
-    void receive(const unsigned char* A, const unsigned char* K) {
-        // Этап 5: Подтверждение получения
-        std::cout << username << " received A from other client." << std::endl;
-
-        // Здесь можно добавить дополнительные шаги для завершения обмена ключами
-        // Например, можно использовать K для шифрования сообщений
-    }
-
-    std::string encrypt(const std::string& plaintext, const unsigned char* K) {
-        EVP_CIPHER_CTX* ctx = EVP_CIPHER_CTX_new();
-        EVP_EncryptInit_ex(ctx, EVP_rc4(), NULL, K, NULL);
-
-        std::string ciphertext;
-        ciphertext.resize(plaintext.size() + EVP_CIPHER_block_size(EVP_rc4()));
-        int len;
-
-        EVP_EncryptUpdate(ctx, (unsigned char*)ciphertext.data(), &len, (unsigned char*)plaintext.data(), plaintext.size());
-        ciphertext.resize(len);
-
-        EVP_EncryptFinal_ex(ctx, (unsigned char*)ciphertext.data() + len, &len);
-        ciphertext.resize(ciphertext.size() + len);
-
-        EVP_CIPHER_CTX_free(ctx);
-        return ciphertext;
-    }
-
-    std::string decrypt(const std::string& ciphertext, const unsigned char* K) {
-        EVP_CIPHER_CTX* ctx = EVP_CIPHER_CTX_new();
-        EVP_DecryptInit_ex(ctx, EVP_rc4(), NULL, K, NULL);
-
-        std::string plaintext;
-        plaintext.resize(ciphertext.size());
-        int len;
-
-        EVP_DecryptUpdate(ctx, (unsigned char*)plaintext.data(), &len, (unsigned char*)ciphertext.data(), ciphertext.size());
-        plaintext.resize(len);
-
-        EVP_DecryptFinal_ex(ctx, (unsigned char*)plaintext.data() + len, &len);
-        plaintext.resize(plaintext.size() + len);
-
-        EVP_CIPHER_CTX_free(ctx);
-        return plaintext;
-    }
-
+    Client(std::string name);
+    void syncSharedKey(Client&);
+    std::vector<unsigned char> sendEpK();
+    void receiveEpK(const std::vector<unsigned char>& EpK);
+    std::vector<unsigned char> sendEp();
 private:
-    std::string username;
-    std::string password;
+    std::vector<unsigned char> encryptAES(const std::vector<unsigned char>& message, const std::vector<unsigned char>& key);
+    std::vector<unsigned char> decryptAES(const std::vector<unsigned char>& encryptedMessage, const std::vector<unsigned char>& key);
 };
 
-int main() {
-    Client clientA("Alice", "password123");
-    Client clientB("Bob", "password456");
+Client::Client(std::string name) : name(name) {
+    sharedKey.resize(keySize);
+    publicKey.resize(keySize);
+    sessionKey.resize(keySize);
 
-    if (clientA.connect(clientB)) {
-        std::string message = "Hello, Bob!";
-        unsigned char K[16]; // Здесь должен быть получен общий ключ K
-
-        // Для примера используем K как нули (нужно заменить на правильный K)
-        memset(K, 0, sizeof(K));
-
-        std::string encryptedMessage = clientA.encrypt(message, K);
-        std::string decryptedMessage = clientB.decrypt(encryptedMessage, K);
-
-        std::cout << "Encrypted Message: " << encryptedMessage << std::endl;
-        std::cout << "Decrypted Message: " << decryptedMessage << std::endl;
+    if (RAND_bytes(sharedKey.data(), sharedKey.size()) != 1) {
+        std::cerr << "Error generating random shared key." << std::endl;
+        abort();
     }
+
+    if (RAND_bytes(publicKey.data(), publicKey.size()) != 1) {
+        std::cerr << "Error generating random public key." << std::endl;
+        abort();
+    }
+
+    if (RAND_bytes(sessionKey.data(), sessionKey.size()) != 1) {
+        std::cerr << "Error generating random public key." << std::endl;
+        abort();
+    }
+}
+
+void Client::syncSharedKey(Client& client) {
+    this->sharedKey = client.sharedKey;
+}
+
+std::vector<unsigned char> Client::sendEpK() {
+    return encryptAES(publicKey, sharedKey);
+}
+
+void Client::receiveEpK(const std::vector<unsigned char>& EpK) {
+    publicKey = decryptAES(EpK, sharedKey);
+}
+
+std::vector<unsigned char> Client::encryptAES(const std::vector<unsigned char>& message, const std::vector<unsigned char>& key) {
+    EVP_CIPHER_CTX* ctx = EVP_CIPHER_CTX_new();
+    if (!ctx) {
+        std::cerr << "Failed to create context." << std::endl;
+        return {};
+    }
+
+    if (EVP_EncryptInit_ex(ctx, EVP_aes_128_ecb(), nullptr, key.data(), nullptr) != 1) {
+        handleErrors();
+        EVP_CIPHER_CTX_free(ctx);
+        return {};
+    }
+
+    std::vector<unsigned char> output(message.size() + EVP_CIPHER_block_size(EVP_aes_128_ecb()));
+    int len = 0;
+
+    if (EVP_EncryptUpdate(ctx, output.data(), &len, message.data(), message.size()) != 1) {
+        handleErrors();
+        EVP_CIPHER_CTX_free(ctx);
+        return {};
+    }
+
+    int final_len = 0;
+    if (EVP_EncryptFinal_ex(ctx, output.data() + len, &final_len) != 1) {
+        handleErrors();
+        EVP_CIPHER_CTX_free(ctx);
+        return {};
+    }
+
+    output.resize(len + final_len);
+    EVP_CIPHER_CTX_free(ctx);
+    return output;
+}
+
+std::vector<unsigned char> Client::decryptAES(const std::vector<unsigned char>& encryptedMessage, const std::vector<unsigned char>& key) {
+    EVP_CIPHER_CTX* ctx = EVP_CIPHER_CTX_new();
+    if (!ctx) {
+        std::cerr << "Failed to create context." << std::endl;
+        return {};
+    }
+
+    if (EVP_DecryptInit_ex(ctx, EVP_aes_128_ecb(), nullptr, key.data(), nullptr) != 1) {
+        handleErrors();
+        EVP_CIPHER_CTX_free(ctx);
+        return {};
+    }
+
+    std::vector<unsigned char> output(encryptedMessage.size());
+    int len = 0;
+
+    if (EVP_DecryptUpdate(ctx, output.data(), &len, encryptedMessage.data(), encryptedMessage.size()) != 1) {
+        handleErrors();
+        EVP_CIPHER_CTX_free(ctx);
+        return {};
+    }
+
+    int final_len = 0;
+    if (EVP_DecryptFinal_ex(ctx, output.data() + len, &final_len) != 1) {
+        handleErrors();
+        EVP_CIPHER_CTX_free(ctx);
+        return {};
+    }
+
+    output.resize(len + final_len);
+    EVP_CIPHER_CTX_free(ctx);
+    return output;
+}
+
+int main() {
+    if (OPENSSL_init_crypto(0, nullptr) != 1) {
+        std::cerr << "OpenSSL initialization failed." << std::endl;
+        return 1;
+    }
+
+    Client server("Alice");
+    Client client("Bob");
+    client.syncSharedKey(server);
+    client.receiveEpK(server.sendEpK());
+
+    std::vector<unsigned char> temp = server.sendEpK();
+
+    std::cout << "Encrypted Data: ";
+    for (unsigned char byte : temp) {
+        std::cout << std::hex << std::setw(2) << std::setfill('0') << static_cast<int>(byte);
+    }
+    std::cout << std::dec << std::endl;
 
     return 0;
 }
