@@ -23,16 +23,16 @@ public class WinApp1 {
         Panel buttonPanel = new Panel();
         buttonPanel.setLayout(new FlowLayout());
 
-        Button moveToNext = new Button("Переместить");
+        Button moveToNext = new Button("Move");
         moveToNext.addActionListener(e -> moveSelectedItem());
 
-        Button addItem = new Button("Добавить");
+        Button addItem = new Button("Add");
         addItem.addActionListener(e -> addItemToList());
 
-        Button editItem = new Button("Редактировать");
+        Button editItem = new Button("Edit");
         editItem.addActionListener(e -> editSelectedItem());
 
-        Button deleteItem = new Button("Удалить");
+        Button deleteItem = new Button("Delete");
         deleteItem.addActionListener(e -> deleteSelectedItem());
 
         buttonPanel.add(moveToNext);
@@ -71,7 +71,7 @@ public class WinApp1 {
     }
 
     private void addItemToList() {
-        String newItem = DialogUtils.showInputDialog("Введите новый элемент:");
+        String newItem = DialogUtils.showInputDialog("Enter new element:");
         if (newItem != null && !newItem.trim().isEmpty()) {
             list2.add(newItem);
         }
@@ -80,7 +80,7 @@ public class WinApp1 {
     private void editSelectedItem() {
         String selectedValue = list2.getSelectedItem();
         if (selectedValue != null) {
-            String newValue = DialogUtils.showInputDialog("Редактировать элемент:", selectedValue);
+            String newValue = DialogUtils.showInputDialog("Edit element:", selectedValue);
             if (newValue != null && !newValue.trim().isEmpty()) {
                 list2.replaceItem(newValue, list2.getSelectedIndex());
             }
@@ -101,13 +101,13 @@ class DialogUtils {
     }
 
     public static String showInputDialog(String message, String initialValue) {
-        Dialog dialog = new Dialog((Frame) null, "Ввод", true);
+        Dialog dialog = new Dialog((Frame) null, "Enter:", true);
         dialog.setLayout(new FlowLayout());
 
         Label label = new Label(message);
         TextField textField = new TextField(initialValue, 20);
         Button okButton = new Button("OK");
-        Button cancelButton = new Button("Отмена");
+        Button cancelButton = new Button("Cancel");
 
         okButton.addActionListener(e -> {
             dialog.setVisible(false);

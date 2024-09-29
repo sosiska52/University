@@ -17,7 +17,6 @@ namespace omis_1._22
         private void button1_Click(object sender, EventArgs e){
             Dialog dialog1 = new Dialog();
             if (dialog1.ShowDialog() == DialogResult.OK){
-                string input = dialog1.text;
                 richTextBox1.Text = dialog1.text;
             }
         }

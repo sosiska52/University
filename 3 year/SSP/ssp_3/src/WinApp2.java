@@ -8,16 +8,16 @@ public class WinApp2 {
     private Choice selectedItems;
 
     public WinApp2() {
-        Frame frame = new Frame("Управление списком");
+        Frame frame = new Frame("Task 2");
         frame.setLayout(new BorderLayout());
 
         itemList = new List();
         for (int i = 0; i < 20; i++) {
-            itemList.add("Элемент " + i);
+            itemList.add("Element " + i);
         }
 
-        oddCheckbox = new Checkbox("Выбрать нечетные строки");
-        evenCheckbox = new Checkbox("Выбрать четные строки");
+        oddCheckbox = new Checkbox("Choose odd lines");
+        evenCheckbox = new Checkbox("Choose even lines");
 
         selectedItems = new Choice();
 

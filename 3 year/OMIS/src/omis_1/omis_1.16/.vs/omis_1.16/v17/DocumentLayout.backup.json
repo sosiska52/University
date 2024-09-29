@@ -7,11 +7,11 @@
       "RelativeMoniker": "D:0:0:{A1D554CA-17BB-4921-A568-DABEEFEC9CB0}|omis_1.16\\omis_1.16.csproj|solutionrelative:omis_1.16\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A1D554CA-17BB-4921-A568-DABEEFEC9CB0}|omis_1.16\\omis_1.16.csproj|d:\\githubrepo\\university\\3 year\\omis\\src\\omis_1\\omis_1.16\\omis_1.16\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{A1D554CA-17BB-4921-A568-DABEEFEC9CB0}|omis_1.16\\omis_1.16.csproj|D:\\GitHubRepo\\University\\3 year\\OMIS\\src\\omis_1\\omis_1.16\\omis_1.16\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{A1D554CA-17BB-4921-A568-DABEEFEC9CB0}|omis_1.16\\omis_1.16.csproj|solutionrelative:omis_1.16\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A1D554CA-17BB-4921-A568-DABEEFEC9CB0}|omis_1.16\\omis_1.16.csproj|d:\\githubrepo\\university\\3 year\\omis\\src\\omis_1\\omis_1.16\\omis_1.16\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A1D554CA-17BB-4921-A568-DABEEFEC9CB0}|omis_1.16\\omis_1.16.csproj|D:\\GitHubRepo\\University\\3 year\\OMIS\\src\\omis_1\\omis_1.16\\omis_1.16\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A1D554CA-17BB-4921-A568-DABEEFEC9CB0}|omis_1.16\\omis_1.16.csproj|solutionrelative:omis_1.16\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -32,7 +32,7 @@
               "RelativeDocumentMoniker": "omis_1.16\\Form1.Designer.cs",
               "ToolTip": "D:\\GitHubRepo\\University\\3 year\\OMIS\\src\\omis_1\\omis_1.16\\omis_1.16\\Form1.Designer.cs",
               "RelativeToolTip": "omis_1.16\\Form1.Designer.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAzwHkAAAA1AAAAAAAAAA==",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAcwHkAAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-27T22:16:17.054Z",
               "EditorCaption": ""
@@ -45,7 +45,7 @@
               "RelativeDocumentMoniker": "omis_1.16\\Form1.cs",
               "ToolTip": "D:\\GitHubRepo\\University\\3 year\\OMIS\\src\\omis_1\\omis_1.16\\omis_1.16\\Form1.cs",
               "RelativeToolTip": "omis_1.16\\Form1.cs",
-              "ViewState": "AgIAACQAAAAAAAAAAAAowDkAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAADcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-27T22:12:30.522Z",
               "EditorCaption": ""
