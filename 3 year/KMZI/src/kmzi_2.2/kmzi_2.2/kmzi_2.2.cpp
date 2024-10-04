@@ -110,7 +110,7 @@ private:
 
     void processBlock(const uint8_t* block) {
         uint32 M[16];
-        std::ofstream fout("hash4.txt");
+        std::ofstream fout("hash8.txt");
         for (int i = 0; i < 16; ++i) {
             M[i] = (block[i * 4] << 24) | (block[i * 4 + 1] << 16) |
                 (block[i * 4 + 2] << 8) | (block[i * 4 + 3]);
@@ -286,7 +286,7 @@ int main() {
     std::cin >> filename;
     std::string msg = readFile(filename);*/
 
-    /*std::string msg1 = "Hello my name is nikita anZ this is my secret message";
+    std::string msg1 = "Oello my name is nikita and this is my secret message";
 
     RIPEMD160 ripemd160;
     ripemd160.update(reinterpret_cast<const uint8_t*>(msg1.c_str()), msg1.length());
@@ -298,10 +298,10 @@ int main() {
     for (const auto& byte : digest) {
         std::cout << std::hex << std::setw(2) << std::setfill('0') << (int)byte;
     }
-    std::cout << std::endl;*/
+    std::cout << std::endl;
 
-    std::string file1 = "hash1.txt"; // Укажите имя первого файла
-    std::string file2 = "hash4.txt"; // Укажите имя второго файла
+    std::string file1 = "hash1.txt";
+    std::string file2 = "hash8.txt"; 
 
     compareFiles(file1, file2);
 
