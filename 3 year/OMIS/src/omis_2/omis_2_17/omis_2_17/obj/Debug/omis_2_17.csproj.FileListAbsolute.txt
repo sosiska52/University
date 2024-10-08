@@ -1,0 +1,10 @@
+D:\GitHubRepo\University\3 year\OMIS\src\omis_2\omis_2_17\omis_2_17\bin\Debug\omis_2_17.exe.config
+D:\GitHubRepo\University\3 year\OMIS\src\omis_2\omis_2_17\omis_2_17\bin\Debug\omis_2_17.exe
+D:\GitHubRepo\University\3 year\OMIS\src\omis_2\omis_2_17\omis_2_17\bin\Debug\omis_2_17.pdb
+D:\GitHubRepo\University\3 year\OMIS\src\omis_2\omis_2_17\omis_2_17\obj\Debug\omis_2_17.csproj.AssemblyReference.cache
+D:\GitHubRepo\University\3 year\OMIS\src\omis_2\omis_2_17\omis_2_17\obj\Debug\omis_2_17.Form1.resources
+D:\GitHubRepo\University\3 year\OMIS\src\omis_2\omis_2_17\omis_2_17\obj\Debug\omis_2_17.Properties.Resources.resources
+D:\GitHubRepo\University\3 year\OMIS\src\omis_2\omis_2_17\omis_2_17\obj\Debug\omis_2_17.csproj.GenerateResource.cache
+D:\GitHubRepo\University\3 year\OMIS\src\omis_2\omis_2_17\omis_2_17\obj\Debug\omis_2_17.csproj.CoreCompileInputs.cache
+D:\GitHubRepo\University\3 year\OMIS\src\omis_2\omis_2_17\omis_2_17\obj\Debug\omis_2_17.exe
+D:\GitHubRepo\University\3 year\OMIS\src\omis_2\omis_2_17\omis_2_17\obj\Debug\omis_2_17.pdb
