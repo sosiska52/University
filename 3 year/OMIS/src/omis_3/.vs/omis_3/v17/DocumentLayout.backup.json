@@ -1,0 +1,173 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\GitHubRepo\\University\\3 year\\OMIS\\src\\omis_3\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{29E492E4-89CA-40F7-A947-A21008E17FF9}|omis_3\\omis_3.vcxproj|D:\\GitHubRepo\\University\\3 year\\OMIS\\src\\omis_3\\omis_3\\Drummer.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{29E492E4-89CA-40F7-A947-A21008E17FF9}|omis_3\\omis_3.vcxproj|solutionrelative:omis_3\\Drummer.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{29E492E4-89CA-40F7-A947-A21008E17FF9}|omis_3\\omis_3.vcxproj|D:\\GitHubRepo\\University\\3 year\\OMIS\\src\\omis_3\\omis_3\\Drummer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{29E492E4-89CA-40F7-A947-A21008E17FF9}|omis_3\\omis_3.vcxproj|solutionrelative:omis_3\\Drummer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{29E492E4-89CA-40F7-A947-A21008E17FF9}|omis_3\\omis_3.vcxproj|D:\\GitHubRepo\\University\\3 year\\OMIS\\src\\omis_3\\omis_3\\Musician.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{29E492E4-89CA-40F7-A947-A21008E17FF9}|omis_3\\omis_3.vcxproj|solutionrelative:omis_3\\Musician.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{29E492E4-89CA-40F7-A947-A21008E17FF9}|omis_3\\omis_3.vcxproj|D:\\GitHubRepo\\University\\3 year\\OMIS\\src\\omis_3\\omis_3\\Musician.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{29E492E4-89CA-40F7-A947-A21008E17FF9}|omis_3\\omis_3.vcxproj|solutionrelative:omis_3\\Musician.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{29E492E4-89CA-40F7-A947-A21008E17FF9}|omis_3\\omis_3.vcxproj|D:\\GitHubRepo\\University\\3 year\\OMIS\\src\\omis_3\\omis_3\\Band.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{29E492E4-89CA-40F7-A947-A21008E17FF9}|omis_3\\omis_3.vcxproj|solutionrelative:omis_3\\Band.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{29E492E4-89CA-40F7-A947-A21008E17FF9}|omis_3\\omis_3.vcxproj|D:\\GitHubRepo\\University\\3 year\\OMIS\\src\\omis_3\\omis_3\\Band.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{29E492E4-89CA-40F7-A947-A21008E17FF9}|omis_3\\omis_3.vcxproj|solutionrelative:omis_3\\Band.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{29E492E4-89CA-40F7-A947-A21008E17FF9}|omis_3\\omis_3.vcxproj|D:\\GitHubRepo\\University\\3 year\\OMIS\\src\\omis_3\\omis_3\\Fest.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{29E492E4-89CA-40F7-A947-A21008E17FF9}|omis_3\\omis_3.vcxproj|solutionrelative:omis_3\\Fest.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{29E492E4-89CA-40F7-A947-A21008E17FF9}|omis_3\\omis_3.vcxproj|D:\\GitHubRepo\\University\\3 year\\OMIS\\src\\omis_3\\omis_3\\Fest.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{29E492E4-89CA-40F7-A947-A21008E17FF9}|omis_3\\omis_3.vcxproj|solutionrelative:omis_3\\Fest.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{29E492E4-89CA-40F7-A947-A21008E17FF9}|omis_3\\omis_3.vcxproj|D:\\GitHubRepo\\University\\3 year\\OMIS\\src\\omis_3\\omis_3\\omis_3.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{29E492E4-89CA-40F7-A947-A21008E17FF9}|omis_3\\omis_3.vcxproj|solutionrelative:omis_3\\omis_3.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Band.cpp",
+              "DocumentMoniker": "D:\\GitHubRepo\\University\\3 year\\OMIS\\src\\omis_3\\omis_3\\Band.cpp",
+              "RelativeDocumentMoniker": "omis_3\\Band.cpp",
+              "ToolTip": "D:\\GitHubRepo\\University\\3 year\\OMIS\\src\\omis_3\\omis_3\\Band.cpp",
+              "RelativeToolTip": "omis_3\\Band.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAwBYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-10-10T06:54:49.077Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Band.h",
+              "DocumentMoniker": "D:\\GitHubRepo\\University\\3 year\\OMIS\\src\\omis_3\\omis_3\\Band.h",
+              "RelativeDocumentMoniker": "omis_3\\Band.h",
+              "ToolTip": "D:\\GitHubRepo\\University\\3 year\\OMIS\\src\\omis_3\\omis_3\\Band.h",
+              "RelativeToolTip": "omis_3\\Band.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-10-10T06:54:44.859Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Musician.cpp",
+              "DocumentMoniker": "D:\\GitHubRepo\\University\\3 year\\OMIS\\src\\omis_3\\omis_3\\Musician.cpp",
+              "RelativeDocumentMoniker": "omis_3\\Musician.cpp",
+              "ToolTip": "D:\\GitHubRepo\\University\\3 year\\OMIS\\src\\omis_3\\omis_3\\Musician.cpp",
+              "RelativeToolTip": "omis_3\\Musician.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-10-10T06:48:33.188Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Musician.h",
+              "DocumentMoniker": "D:\\GitHubRepo\\University\\3 year\\OMIS\\src\\omis_3\\omis_3\\Musician.h",
+              "RelativeDocumentMoniker": "omis_3\\Musician.h",
+              "ToolTip": "D:\\GitHubRepo\\University\\3 year\\OMIS\\src\\omis_3\\omis_3\\Musician.h",
+              "RelativeToolTip": "omis_3\\Musician.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-10-10T06:48:32.026Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Drummer.h",
+              "DocumentMoniker": "D:\\GitHubRepo\\University\\3 year\\OMIS\\src\\omis_3\\omis_3\\Drummer.h",
+              "RelativeDocumentMoniker": "omis_3\\Drummer.h",
+              "ToolTip": "D:\\GitHubRepo\\University\\3 year\\OMIS\\src\\omis_3\\omis_3\\Drummer.h*",
+              "RelativeToolTip": "omis_3\\Drummer.h*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-10-10T06:48:10.266Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Drummer.cpp",
+              "DocumentMoniker": "D:\\GitHubRepo\\University\\3 year\\OMIS\\src\\omis_3\\omis_3\\Drummer.cpp",
+              "RelativeDocumentMoniker": "omis_3\\Drummer.cpp",
+              "ToolTip": "D:\\GitHubRepo\\University\\3 year\\OMIS\\src\\omis_3\\omis_3\\Drummer.cpp",
+              "RelativeToolTip": "omis_3\\Drummer.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-10-10T06:48:01.037Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Fest.h",
+              "DocumentMoniker": "D:\\GitHubRepo\\University\\3 year\\OMIS\\src\\omis_3\\omis_3\\Fest.h",
+              "RelativeDocumentMoniker": "omis_3\\Fest.h",
+              "ToolTip": "D:\\GitHubRepo\\University\\3 year\\OMIS\\src\\omis_3\\omis_3\\Fest.h",
+              "RelativeToolTip": "omis_3\\Fest.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-10-10T06:43:40.919Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Fest.cpp",
+              "DocumentMoniker": "D:\\GitHubRepo\\University\\3 year\\OMIS\\src\\omis_3\\omis_3\\Fest.cpp",
+              "RelativeDocumentMoniker": "omis_3\\Fest.cpp",
+              "ToolTip": "D:\\GitHubRepo\\University\\3 year\\OMIS\\src\\omis_3\\omis_3\\Fest.cpp",
+              "RelativeToolTip": "omis_3\\Fest.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-10-10T06:43:39.444Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "omis_3.cpp",
+              "DocumentMoniker": "D:\\GitHubRepo\\University\\3 year\\OMIS\\src\\omis_3\\omis_3\\omis_3.cpp",
+              "RelativeDocumentMoniker": "omis_3\\omis_3.cpp",
+              "ToolTip": "D:\\GitHubRepo\\University\\3 year\\OMIS\\src\\omis_3\\omis_3\\omis_3.cpp",
+              "RelativeToolTip": "omis_3\\omis_3.cpp",
+              "ViewState": "AgIAABAAAAAAAAAAAAAjwB0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-10-08T20:22:07.639Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
