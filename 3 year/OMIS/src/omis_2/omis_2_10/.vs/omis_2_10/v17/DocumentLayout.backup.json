@@ -7,7 +7,7 @@
       "RelativeMoniker": "D:0:0:{CB0CAAE5-C5F1-4FE1-8863-C7DCD8B27B66}|omis_2_10\\omis_2_10.csproj|solutionrelative:omis_2_10\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CB0CAAE5-C5F1-4FE1-8863-C7DCD8B27B66}|omis_2_10\\omis_2_10.csproj|d:\\githubrepo\\university\\3 year\\omis\\src\\omis_2\\omis_2_10\\omis_2_10\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{CB0CAAE5-C5F1-4FE1-8863-C7DCD8B27B66}|omis_2_10\\omis_2_10.csproj|D:\\GitHubRepo\\University\\3 year\\OMIS\\src\\omis_2\\omis_2_10\\omis_2_10\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{CB0CAAE5-C5F1-4FE1-8863-C7DCD8B27B66}|omis_2_10\\omis_2_10.csproj|solutionrelative:omis_2_10\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
@@ -28,7 +28,7 @@
               "RelativeDocumentMoniker": "omis_2_10\\Form1.cs",
               "ToolTip": "D:\\GitHubRepo\\University\\3 year\\OMIS\\src\\omis_2\\omis_2_10\\omis_2_10\\Form1.cs",
               "RelativeToolTip": "omis_2_10\\Form1.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAAYwC4AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABMAAAAAAAAAAAAYwBUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-08T13:13:45.57Z",
               "EditorCaption": ""
@@ -42,8 +42,7 @@
               "ToolTip": "D:\\GitHubRepo\\University\\3 year\\OMIS\\src\\omis_2\\omis_2_10\\omis_2_10\\Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "RelativeToolTip": "omis_2_10\\Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-07T17:36:28.339Z",
-              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
+              "WhenOpened": "2024-10-07T17:36:28.339Z"
             }
           ]
         }

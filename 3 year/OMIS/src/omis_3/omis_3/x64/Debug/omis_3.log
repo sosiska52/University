@@ -1,6 +1,8 @@
 ﻿  Band.cpp
   Drummer.cpp
   Fest.cpp
+  Guitarist.cpp
+  Musician.cpp
   omis_3.cpp
   Создание кода...
   omis_3.vcxproj -> D:\GitHubRepo\University\3 year\OMIS\src\omis_3\x64\Debug\omis_3.exe

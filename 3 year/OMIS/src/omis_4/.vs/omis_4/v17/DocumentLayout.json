@@ -1,0 +1,153 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\GitHubRepo\\University\\3 year\\OMIS\\src\\omis_4\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{E6C98352-C9A7-4558-9929-A8366E35B0B7}|omis_4\\omis_4.csproj|d:\\githubrepo\\university\\3 year\\omis\\src\\omis_4\\omis_4\\signin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E6C98352-C9A7-4558-9929-A8366E35B0B7}|omis_4\\omis_4.csproj|solutionrelative:omis_4\\signin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E6C98352-C9A7-4558-9929-A8366E35B0B7}|omis_4\\omis_4.csproj|d:\\githubrepo\\university\\3 year\\omis\\src\\omis_4\\omis_4\\signform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E6C98352-C9A7-4558-9929-A8366E35B0B7}|omis_4\\omis_4.csproj|solutionrelative:omis_4\\signform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E6C98352-C9A7-4558-9929-A8366E35B0B7}|omis_4\\omis_4.csproj|d:\\githubrepo\\university\\3 year\\omis\\src\\omis_4\\omis_4\\signform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{E6C98352-C9A7-4558-9929-A8366E35B0B7}|omis_4\\omis_4.csproj|solutionrelative:omis_4\\signform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E6C98352-C9A7-4558-9929-A8366E35B0B7}|omis_4\\omis_4.csproj|D:\\GitHubRepo\\University\\3 year\\OMIS\\src\\omis_4\\omis_4\\logins.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{E6C98352-C9A7-4558-9929-A8366E35B0B7}|omis_4\\omis_4.csproj|solutionrelative:omis_4\\logins.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E6C98352-C9A7-4558-9929-A8366E35B0B7}|omis_4\\omis_4.csproj|D:\\GitHubRepo\\University\\3 year\\OMIS\\src\\omis_4\\omis_4\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E6C98352-C9A7-4558-9929-A8366E35B0B7}|omis_4\\omis_4.csproj|solutionrelative:omis_4\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E6C98352-C9A7-4558-9929-A8366E35B0B7}|omis_4\\omis_4.csproj|d:\\githubrepo\\university\\3 year\\omis\\src\\omis_4\\omis_4\\searchresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E6C98352-C9A7-4558-9929-A8366E35B0B7}|omis_4\\omis_4.csproj|solutionrelative:omis_4\\searchresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E6C98352-C9A7-4558-9929-A8366E35B0B7}|omis_4\\omis_4.csproj|D:\\GitHubRepo\\University\\3 year\\OMIS\\src\\omis_4\\omis_4\\searchtask.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E6C98352-C9A7-4558-9929-A8366E35B0B7}|omis_4\\omis_4.csproj|solutionrelative:omis_4\\searchtask.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E6C98352-C9A7-4558-9929-A8366E35B0B7}|omis_4\\omis_4.csproj|D:\\GitHubRepo\\University\\3 year\\OMIS\\src\\omis_4\\omis_4\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{E6C98352-C9A7-4558-9929-A8366E35B0B7}|omis_4\\omis_4.csproj|solutionrelative:omis_4\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "SignIn.cs",
+              "DocumentMoniker": "D:\\GitHubRepo\\University\\3 year\\OMIS\\src\\omis_4\\omis_4\\SignIn.cs",
+              "RelativeDocumentMoniker": "omis_4\\SignIn.cs",
+              "ToolTip": "D:\\GitHubRepo\\University\\3 year\\OMIS\\src\\omis_4\\omis_4\\SignIn.cs",
+              "RelativeToolTip": "omis_4\\SignIn.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAD4vw8AAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-12T10:46:18.103Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "SignForm.cs",
+              "DocumentMoniker": "D:\\GitHubRepo\\University\\3 year\\OMIS\\src\\omis_4\\omis_4\\SignForm.cs",
+              "RelativeDocumentMoniker": "omis_4\\SignForm.cs",
+              "ToolTip": "D:\\GitHubRepo\\University\\3 year\\OMIS\\src\\omis_4\\omis_4\\SignForm.cs",
+              "RelativeToolTip": "omis_4\\SignForm.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAtwBcAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-12T10:45:29.11Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "SignForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "DocumentMoniker": "D:\\GitHubRepo\\University\\3 year\\OMIS\\src\\omis_4\\omis_4\\SignForm.cs",
+              "RelativeDocumentMoniker": "omis_4\\SignForm.cs",
+              "ToolTip": "D:\\GitHubRepo\\University\\3 year\\OMIS\\src\\omis_4\\omis_4\\SignForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "RelativeToolTip": "omis_4\\SignForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-12T10:45:22.865Z",
+              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "SearchResult.cs",
+              "DocumentMoniker": "D:\\GitHubRepo\\University\\3 year\\OMIS\\src\\omis_4\\omis_4\\SearchResult.cs",
+              "RelativeDocumentMoniker": "omis_4\\SearchResult.cs",
+              "ToolTip": "D:\\GitHubRepo\\University\\3 year\\OMIS\\src\\omis_4\\omis_4\\SearchResult.cs",
+              "RelativeToolTip": "omis_4\\SearchResult.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAewCQAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-11T11:18:41.727Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "SearchTask.cs",
+              "DocumentMoniker": "D:\\GitHubRepo\\University\\3 year\\OMIS\\src\\omis_4\\omis_4\\SearchTask.cs",
+              "RelativeDocumentMoniker": "omis_4\\SearchTask.cs",
+              "ToolTip": "D:\\GitHubRepo\\University\\3 year\\OMIS\\src\\omis_4\\omis_4\\SearchTask.cs",
+              "RelativeToolTip": "omis_4\\SearchTask.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAlwBwAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-11T11:11:30.241Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MainForm.cs",
+              "DocumentMoniker": "D:\\GitHubRepo\\University\\3 year\\OMIS\\src\\omis_4\\omis_4\\MainForm.cs",
+              "RelativeDocumentMoniker": "omis_4\\MainForm.cs",
+              "ToolTip": "D:\\GitHubRepo\\University\\3 year\\OMIS\\src\\omis_4\\omis_4\\MainForm.cs",
+              "RelativeToolTip": "omis_4\\MainForm.cs",
+              "ViewState": "AgIAAEEAAAAAAAAAAAAowFwAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-11T08:53:31.568Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "MainForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "DocumentMoniker": "D:\\GitHubRepo\\University\\3 year\\OMIS\\src\\omis_4\\omis_4\\MainForm.cs",
+              "RelativeDocumentMoniker": "omis_4\\MainForm.cs",
+              "ToolTip": "D:\\GitHubRepo\\University\\3 year\\OMIS\\src\\omis_4\\omis_4\\MainForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "RelativeToolTip": "omis_4\\MainForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-11T09:35:52.213Z",
+              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "logins.txt",
+              "DocumentMoniker": "D:\\GitHubRepo\\University\\3 year\\OMIS\\src\\omis_4\\omis_4\\logins.txt",
+              "RelativeDocumentMoniker": "omis_4\\logins.txt",
+              "ToolTip": "D:\\GitHubRepo\\University\\3 year\\OMIS\\src\\omis_4\\omis_4\\logins.txt",
+              "RelativeToolTip": "omis_4\\logins.txt",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2024-10-11T09:12:02.224Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
