@@ -1,0 +1,6 @@
+﻿  aipo_1.cpp
+D:\GitHubRepo\University\3 year\AIPO\src\aipo_2\aipo_1_server\aipo_1\aipo_1.cpp(84,68): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+D:\GitHubRepo\University\3 year\AIPO\src\aipo_2\aipo_1_server\aipo_1\aipo_1.cpp(95,64): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+D:\GitHubRepo\University\3 year\AIPO\src\aipo_2\aipo_1_server\aipo_1\aipo_1.cpp(111,44): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+D:\GitHubRepo\University\3 year\AIPO\src\aipo_2\aipo_1_server\aipo_1\aipo_1.cpp(119,68): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+  aipo_1.vcxproj -> D:\GitHubRepo\University\3 year\AIPO\src\aipo_2\aipo_1_server\x64\Debug\aipo_1.exe
