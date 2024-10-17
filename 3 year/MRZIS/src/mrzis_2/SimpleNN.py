@@ -2,75 +2,50 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 class SimpleNN:
-    def __init__(self, x_len):
-        self.X = self.X = np.zeros(x_len)
-        self.W = np.random.uniform(0.1,0.9, x_len)
-        self.T = np.random.uniform(0.1, 1)
-        self.alp = 0.3
+    def __init__(self, x_len, y_len):
+        #self.X = np.array(x_len)
+        self.X = np.array([1,2,3,4,5])
+        self.Y = np.array(y_len)
+        self.W = np.random.rand(x_len, y_len)
+        self.T = np.array(y_len)
+        self.alp: float = 0.1
 
-    def forwardProp(self, image):
+    def forward_prop(self, image):
         self.X = np.zeros_like(image)
-        for i in range(len(image)):
-            self.X[i] = image[i]
-
-        sum_val = self.X[0] * self.W[0] + self.X[1] * self.W[1] - self.T
-        return self.activationF(sum_val)
-
-    def activationF(self, num):
-        return 0 if num <= 0 else 1
+        return np.dot(image, self.W) - self.T
 
     def adjust(self, error):
-        for i in range(len(self.W)):
-            self.W[i] -= self.alp * error * self.X[i]
-        self.T += self.alp * error
+        for t in self.T:
+            t += self.alp * error
+        for i in range(self.W.shape[0]):
+            for j in range(self.W.shape[1]):
+                self.W[i, j] -= self.alp * error * self.X[i]
 
-    def trainNN(self, trainMatrix, e, maxEpoch=100):
-        epoch = 0
-        allErrors = []
-        while epoch < maxEpoch:
-            total_error = 0
-            for i in range(len(trainMatrix)):
-                Y = self.forwardProp(trainMatrix[i])
-                error = (Y - e[i])
-                total_error += error
+    def train(self, train_data, train_e, test_data, test_e):
+        epoch: int = 0
+        max_epoch: int = 100
+        error: float = 100
+        is_trained: bool = False
+        ind: int = 0
+
+        while epoch < max_epoch:
+            while not is_trained:
+                Y = self.forward_prop(train_data[ind:ind + len(self.X)])
+                error = Y - train_e[ind + len(self.X) - 1]
                 self.adjust(error)
-
-            average_error = total_error / len(trainMatrix)
-            allErrors.append(average_error)
-            print(f"Epoch: {epoch}, Average Error: {average_error}")
-
-            if average_error == 0:
-                self.drawErrorGraph(allErrors)
-                break
+            is_trained = self.test(test_data, test_e)
             epoch += 1
 
-    def draw(self, trainMatrinx, e):
-         x, y = zip(*trainMatrinx)
-         x += (x[0],)
-         y += (y[0],)
-
-         plt.figure()
-         plt.plot(x, y, marker='o')
-         k = -1 * self.W[0] / self.W[1]
-         b = self.T / self.W[1]
-
-         x_line = np.linspace(-3, 3, 5)
-         y_line = k * x_line + b
-
-         plt.plot(x_line, y_line, color='red')
-
-         plt.title('Visualization')
-         plt.xlim(-3, 3)  # Устанавливаем пределы по оси x
-         plt.ylim(-3, 3)  # Устанавливаем пределы по оси y
-         plt.grid()
-         plt.xlabel('X1')
-         plt.ylabel('X2')
-
-         # Добавляем значения на углах
-         for i in range(len(e)):
-             plt.text(x[i], y[i], str(e[i]), fontsize=12, ha='right', va='bottom')
-
-         plt.show()
+    def test(self, test_data, test_e) -> bool:
+        mse: float = 0.0
+        ind: int = 0
+        while ind + len(self.X) - 1 < len(test_data):
+            Y = self.forward_prop(test_data[ind:ind + len(self.X)])
+            mse += (Y - test_e[ind + len(self.X) - 1]) **2
+            ind += 1
+        mse = 0.5 * mse
+        print(mse)
+        return mse < 0.001
 
     def drawErrorGraph(self, errors):
         x = np.arange(len(errors))
