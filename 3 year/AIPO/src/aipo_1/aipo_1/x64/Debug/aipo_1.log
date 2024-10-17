@@ -1,4 +1,0 @@
-﻿  aipo_1.cpp
-D:\GitHubRepo\University\3 year\AIPO\src\aipo_1\aipo_1\aipo_1.cpp(35,28): warning C4244: аргумент: преобразование "SOCKET" в "int", возможна потеря данных
-D:\GitHubRepo\University\3 year\AIPO\src\aipo_1\aipo_1\aipo_1.cpp(47,8): warning C4101: buff: неиспользованная локальная переменная
-  aipo_1.vcxproj -> D:\GitHubRepo\University\3 year\AIPO\src\aipo_1\x64\Debug\aipo_1.exe

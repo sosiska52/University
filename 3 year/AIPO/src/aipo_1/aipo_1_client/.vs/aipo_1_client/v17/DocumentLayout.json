@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\GitHubRepo\\University\\3 year\\AIPO\\src\\aipo_1\\aipo_1_client\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{5A212D58-F835-49B9-961A-DF9431A7EC9A}|aipo_1_client\\aipo_1_client.vcxproj|D:\\GitHubRepo\\University\\3 year\\AIPO\\src\\aipo_1\\aipo_1_client\\aipo_1_client\\aipo_1_client.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{5A212D58-F835-49B9-961A-DF9431A7EC9A}|aipo_1_client\\aipo_1_client.vcxproj|solutionrelative:aipo_1_client\\aipo_1_client.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "aipo_1_client.cpp",
+              "DocumentMoniker": "D:\\GitHubRepo\\University\\3 year\\AIPO\\src\\aipo_1\\aipo_1_client\\aipo_1_client\\aipo_1_client.cpp",
+              "RelativeDocumentMoniker": "aipo_1_client\\aipo_1_client.cpp",
+              "ToolTip": "D:\\GitHubRepo\\University\\3 year\\AIPO\\src\\aipo_1\\aipo_1_client\\aipo_1_client\\aipo_1_client.cpp",
+              "RelativeToolTip": "aipo_1_client\\aipo_1_client.cpp",
+              "ViewState": "AgIAAHUAAAAAAAAAAAAowJAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-10-17T13:09:35.123Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
