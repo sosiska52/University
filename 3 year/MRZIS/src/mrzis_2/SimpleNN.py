@@ -63,19 +63,16 @@ class SimpleNN:
             Y = self.forward_prop(image)
             mse += 0.5 * (Y - test_e[ind]) **2
             ind += 1
-        #print(f"MSE: {mse}")
+        print(f"MSE: {mse}")
         self.errors_for_chart = np.append(self.errors_for_chart, mse)
         return mse < 0.00000000000001
 
     def train_batch(self, train_data, train_e, test_data, test_e, batch_size):
         max_epoch: int = 100
-
         num_of_batches = len(train_data) / batch_size
         for epoch in range(max_epoch):
             start: int = 0
-
             while start < num_of_batches:
-
                 batch_data = train_data[start: start + batch_size]
                 batch_e = train_e[start: start + batch_size]
                 batch_error: float = 0

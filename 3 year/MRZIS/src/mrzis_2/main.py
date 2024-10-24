@@ -1,5 +1,6 @@
 import SimpleNN as slp
 import numpy as np
+import time
 
 def create_matrix_from_file(start ,end):
     with open("data.txt", 'r') as file:
@@ -28,7 +29,10 @@ if __name__ == '__main__':
     train_e = create_array_from_file(5, train_len - 1)
     test_e = create_array_from_file(train_len + 5, train_len + test_len - 1)
 
+    start_time = time.time()
     network = slp.SimpleNN(5, 1)
-    network.adaptive_flag = False
+    network.adaptive_flag = True
     #network.train_online(train_data, train_e, test_data, test_e)
     network.train_batch(train_data, train_e, test_data, test_e, 2)
+    end_time = time.time()
+    print(f"Time: {end_time - start_time}")
