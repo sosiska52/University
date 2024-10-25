@@ -128,6 +128,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="kmzi_2.2.cpp" />
+    <ClCompile Include="RipeMD160_Hash.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="RipeMD160_Hash.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
