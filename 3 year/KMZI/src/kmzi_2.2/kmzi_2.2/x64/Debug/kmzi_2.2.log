@@ -1,16 +1,2 @@
-﻿  RipeMD160_Hash.cpp
-D:\GitHubRepo\University\3 year\KMZI\src\kmzi_2.2\kmzi_2.2\RipeMD160_Hash.h(27,28): warning C4267: +=: преобразование из "size_t" в "uint32"; возможна потеря данных
-  (компиляция исходного файла "RipeMD160_Hash.cpp")
-  
-D:\GitHubRepo\University\3 year\KMZI\src\kmzi_2.2\kmzi_2.2\RipeMD160_Hash.h(31,28): warning C4267: +=: преобразование из "size_t" в "uint32"; возможна потеря данных
-  (компиляция исходного файла "RipeMD160_Hash.cpp")
-  
-  kmzi_2.2.cpp
-D:\GitHubRepo\University\3 year\KMZI\src\kmzi_2.2\kmzi_2.2\RipeMD160_Hash.h(27,28): warning C4267: +=: преобразование из "size_t" в "uint32"; возможна потеря данных
-  (компиляция исходного файла "kmzi_2.2.cpp")
-  
-D:\GitHubRepo\University\3 year\KMZI\src\kmzi_2.2\kmzi_2.2\RipeMD160_Hash.h(31,28): warning C4267: +=: преобразование из "size_t" в "uint32"; возможна потеря данных
-  (компиляция исходного файла "kmzi_2.2.cpp")
-  
-  Создание кода...
+﻿  kmzi_2.2.cpp
   kmzi_2.2.vcxproj -> D:\GitHubRepo\University\3 year\KMZI\src\kmzi_2.2\x64\Debug\kmzi_2.2.exe

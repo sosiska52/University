@@ -72,7 +72,7 @@ int main() {
     std::cin >> filename;
     std::string msg = readFile(filename);*/
 
-    std::string msg1 = "Рello my name is nikita and this is my secret message";
+    std::string msg1 = "Hello my name is nikita and this is my secret message";
 
     RIPEMD160 ripemd160;
     ripemd160.update(reinterpret_cast<const uint8_t*>(msg1.c_str()), msg1.length());

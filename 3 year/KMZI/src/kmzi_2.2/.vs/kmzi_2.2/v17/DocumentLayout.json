@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "D:\\GitHubRepo\\University\\3 year\\KMZI\\src\\kmzi_2.2\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9FD9EE5E-BD18-4F1B-9986-2EEC564ADFE1}|kmzi_2.2\\kmzi_2.2.vcxproj|D:\\GitHubRepo\\University\\3 year\\KMZI\\src\\kmzi_2.2\\kmzi_2.2\\kmzi_2.2.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{9FD9EE5E-BD18-4F1B-9986-2EEC564ADFE1}|kmzi_2.2\\kmzi_2.2.vcxproj|solutionrelative:kmzi_2.2\\kmzi_2.2.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{9FD9EE5E-BD18-4F1B-9986-2EEC564ADFE1}|kmzi_2.2\\kmzi_2.2.vcxproj|D:\\GitHubRepo\\University\\3 year\\KMZI\\src\\kmzi_2.2\\kmzi_2.2\\RipeMD160_Hash.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{9FD9EE5E-BD18-4F1B-9986-2EEC564ADFE1}|kmzi_2.2\\kmzi_2.2.vcxproj|solutionrelative:kmzi_2.2\\RipeMD160_Hash.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9FD9EE5E-BD18-4F1B-9986-2EEC564ADFE1}|kmzi_2.2\\kmzi_2.2.vcxproj|D:\\GitHubRepo\\University\\3 year\\KMZI\\src\\kmzi_2.2\\kmzi_2.2\\kmzi_2.2.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{9FD9EE5E-BD18-4F1B-9986-2EEC564ADFE1}|kmzi_2.2\\kmzi_2.2.vcxproj|solutionrelative:kmzi_2.2\\kmzi_2.2.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{9FD9EE5E-BD18-4F1B-9986-2EEC564ADFE1}|kmzi_2.2\\kmzi_2.2.vcxproj|D:\\GitHubRepo\\University\\3 year\\KMZI\\src\\kmzi_2.2\\kmzi_2.2\\RipeMD160_Hash.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -22,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
@@ -32,33 +32,33 @@
               "RelativeDocumentMoniker": "kmzi_2.2\\RipeMD160_Hash.cpp",
               "ToolTip": "D:\\GitHubRepo\\University\\3 year\\KMZI\\src\\kmzi_2.2\\kmzi_2.2\\RipeMD160_Hash.cpp",
               "RelativeToolTip": "kmzi_2.2\\RipeMD160_Hash.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAfAAAAAAAAAA==",
+              "ViewState": "AgIAADwAAAAAAAAAAAAAAD4AAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-10-24T20:27:56.084Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "RipeMD160_Hash.h",
               "DocumentMoniker": "D:\\GitHubRepo\\University\\3 year\\KMZI\\src\\kmzi_2.2\\kmzi_2.2\\RipeMD160_Hash.h",
               "RelativeDocumentMoniker": "kmzi_2.2\\RipeMD160_Hash.h",
               "ToolTip": "D:\\GitHubRepo\\University\\3 year\\KMZI\\src\\kmzi_2.2\\kmzi_2.2\\RipeMD160_Hash.h",
               "RelativeToolTip": "kmzi_2.2\\RipeMD160_Hash.h",
-              "ViewState": "AgIAAKoAAAAAAAAAAAAAALcAAAACAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA4AAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-10-24T20:16:14.091Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "kmzi_2.2.cpp",
               "DocumentMoniker": "D:\\GitHubRepo\\University\\3 year\\KMZI\\src\\kmzi_2.2\\kmzi_2.2\\kmzi_2.2.cpp",
               "RelativeDocumentMoniker": "kmzi_2.2\\kmzi_2.2.cpp",
               "ToolTip": "D:\\GitHubRepo\\University\\3 year\\KMZI\\src\\kmzi_2.2\\kmzi_2.2\\kmzi_2.2.cpp",
               "RelativeToolTip": "kmzi_2.2\\kmzi_2.2.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEYAAAAgAAAAAAAAAA==",
+              "ViewState": "AgIAAEYAAAAAAAAAAAAAAFMAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-10-03T10:37:22.589Z",
               "EditorCaption": ""
