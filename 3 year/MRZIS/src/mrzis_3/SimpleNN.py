@@ -85,7 +85,7 @@ class SimpleNN:
                 ind += 1
             if self.test(test_data, test_e):
                 print(f"Network trained in {epoch} epoches")
-                #self.drawErrorGraph()
+                self.drawErrorGraph()
                 break
 
     def test(self, test_data, test_e) -> bool:
@@ -131,7 +131,7 @@ class SimpleNN:
                 start += batch_size
                 if self.test(test_data, test_e):
                     print(f"Network trained in {epoch} epoches")
-                    #self.drawErrorGraph()
+                    self.drawErrorGraph()
                     return
 
     def drawErrorGraph(self):

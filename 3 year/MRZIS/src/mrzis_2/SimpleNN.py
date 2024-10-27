@@ -65,7 +65,7 @@ class SimpleNN:
             ind += 1
         print(f"MSE: {mse}")
         self.errors_for_chart = np.append(self.errors_for_chart, mse)
-        return mse < 0.00000000000001
+        return mse < 0.000_000_000_000_01
 
     def train_batch(self, train_data, train_e, test_data, test_e, batch_size):
         max_epoch: int = 100

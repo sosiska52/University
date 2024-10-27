@@ -34,7 +34,7 @@ if __name__ == '__main__':
 
     start_time = time.time()
     network = SimpleNN(2,1)
-    network.adaptive_flag = False
+    network.adaptive_flag = True
     #network.train_online(train_data,train_e, test_data, test_e)
     network.train_batch(train_data, train_e, test_data, test_e, 2)
     end_time = time.time()
