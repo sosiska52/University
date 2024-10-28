@@ -1,0 +1,15 @@
+D:\GitHubRepo\University\3 year\OMIS\src\omis_task2\omis_task2\bin\Debug\net8.0\omis_task2.exe
+D:\GitHubRepo\University\3 year\OMIS\src\omis_task2\omis_task2\bin\Debug\net8.0\omis_task2.deps.json
+D:\GitHubRepo\University\3 year\OMIS\src\omis_task2\omis_task2\bin\Debug\net8.0\omis_task2.runtimeconfig.json
+D:\GitHubRepo\University\3 year\OMIS\src\omis_task2\omis_task2\bin\Debug\net8.0\omis_task2.dll
+D:\GitHubRepo\University\3 year\OMIS\src\omis_task2\omis_task2\bin\Debug\net8.0\omis_task2.pdb
+D:\GitHubRepo\University\3 year\OMIS\src\omis_task2\omis_task2\obj\Debug\net8.0\omis_task2.GeneratedMSBuildEditorConfig.editorconfig
+D:\GitHubRepo\University\3 year\OMIS\src\omis_task2\omis_task2\obj\Debug\net8.0\omis_task2.AssemblyInfoInputs.cache
+D:\GitHubRepo\University\3 year\OMIS\src\omis_task2\omis_task2\obj\Debug\net8.0\omis_task2.AssemblyInfo.cs
+D:\GitHubRepo\University\3 year\OMIS\src\omis_task2\omis_task2\obj\Debug\net8.0\omis_task2.csproj.CoreCompileInputs.cache
+D:\GitHubRepo\University\3 year\OMIS\src\omis_task2\omis_task2\obj\Debug\net8.0\omis_task2.sourcelink.json
+D:\GitHubRepo\University\3 year\OMIS\src\omis_task2\omis_task2\obj\Debug\net8.0\omis_task2.dll
+D:\GitHubRepo\University\3 year\OMIS\src\omis_task2\omis_task2\obj\Debug\net8.0\refint\omis_task2.dll
+D:\GitHubRepo\University\3 year\OMIS\src\omis_task2\omis_task2\obj\Debug\net8.0\omis_task2.pdb
+D:\GitHubRepo\University\3 year\OMIS\src\omis_task2\omis_task2\obj\Debug\net8.0\omis_task2.genruntimeconfig.cache
+D:\GitHubRepo\University\3 year\OMIS\src\omis_task2\omis_task2\obj\Debug\net8.0\ref\omis_task2.dll
