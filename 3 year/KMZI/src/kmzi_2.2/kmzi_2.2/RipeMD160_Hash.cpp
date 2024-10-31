@@ -1,5 +1,10 @@
 #include "RipeMD160_Hash.h"
 
+void RIPEMD160::hash(std::string& message, size_t length, uint8_t digest[20]) {
+    update(reinterpret_cast<const uint8_t*>(message.c_str()), message.length());
+    finalize(digest);
+}
+
 const int RIPEMD160::R1[80] = {
     0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15,
     7,  4, 13,  1, 10,  6, 15,  3, 12,  0,  9,  5,  2, 14, 11,  8,

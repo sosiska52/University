@@ -9,7 +9,7 @@
 class RIPEMD160 {
 public:
     RIPEMD160();
-    void hash(const uint8_t* message, size_t length, uint8_t digest[20]);
+    void hash(std::string& message, size_t length, uint8_t digest[20]);
 private:
     void update(const uint8_t* message, size_t length);
     void finalize(uint8_t digest[20]);
