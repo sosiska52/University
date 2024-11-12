@@ -1,6 +1,6 @@
 #include "TCP.h"
 
-TCPServer::TCPServer(const char* ipAddr, int port) {
+void TCPServer::initialise(const char* ipAddr, int port) {
 	int erStat = WSAStartup(MAKEWORD(2, 2), &wsData);
 	if (erStat != 0) {
 		std::cout << WSAGetLastError();
@@ -68,15 +68,41 @@ bool TCPServer::connectClient() {
 		std::runtime_error("Client detected, but can't connect to a client. Error # ");
 	}
 	else std::cout << "Connection to a client established successfully\n";
-
-	servBuff = std::pair<std::vector<char>, std::vector<char>>(std::vector<char>(BUFF_SIZE), std::vector<char>(BUFF_SIZE));
-	clientBuff = std::pair<std::vector<char>, std::vector<char>>(std::vector<char>(BUFF_SIZE), std::vector<char>(BUFF_SIZE));
-	short packet_size = 0;
 	return true;
 }
 
+bool TCPServer::sendMessage(const std::string& msg) {
+	if (msg.empty()) {
+		std::cout << "Message is empty. Nothing to send.\n";
+		return false;
+	}
+	int packet_size = 0;
+	packet_size = send(ClientConn, msg.data(), msg.size(), 0);
 
-TCPClient::TCPClient() {
+	if (packet_size == SOCKET_ERROR) {
+		std::cout << "Can't send message to Client. Error # " << WSAGetLastError() << "\n";
+		return false;
+	}
+	return true;
+}
+
+bool TCPServer::receiveMessage(std::string& msg) {
+	int packet_size = 0;
+	packet_size = recv(ClientConn, &msg[0], msg.size(), 0);
+	if (packet_size == SOCKET_ERROR) {
+		std::cout << "Can't send message to Client. Error # " << WSAGetLastError() << "\n";
+		return false;
+	}
+	return true;
+}
+
+void TCPServer::abbort() {
+	shutdown(ClientConn, SD_BOTH);
+}
+
+/////////////////////////////////////
+
+void TCPClient::initialise() {
 	int erStat = WSAStartup(MAKEWORD(2, 2), &wsData);
 
 	if (erStat != 0) {
@@ -122,4 +148,33 @@ bool TCPClient::connectServer(const char* ipAddr, int port) {
 		return false;
 	}
 	return true;
+}
+
+bool TCPClient::sendMessage(const std::string& msg) {
+	if (msg.empty()) {
+		std::cout << "Message is empty. Nothing to send.\n";
+		return false;
+	}
+	int packet_size = 0;
+	packet_size = send(ClientSock, msg.data(), msg.size(), 0);
+
+	if (packet_size == SOCKET_ERROR) {
+		std::cout << "Can't send message to Client. Error # " << WSAGetLastError() << "\n";
+		return false;
+	}
+	return true;
+}
+
+bool TCPClient::receiveMessage(std::string& msg) {
+	int packet_size = 0;
+	packet_size = recv(ClientSock, &msg[0], msg.size(), 0);
+	if (packet_size == SOCKET_ERROR) {
+		std::cout << "Can't send message to Client. Error # " << WSAGetLastError() << "\n";
+		return false;
+	}
+	return true;
+}
+
+void TCPClient::abbort() {
+	shutdown(ClientSock, SD_BOTH);
 }

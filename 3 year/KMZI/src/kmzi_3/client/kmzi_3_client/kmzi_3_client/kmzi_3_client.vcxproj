@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{3a3b0e32-5408-48c5-afbc-c1239952ad2a}</ProjectGuid>
-    <RootNamespace>kmzi3</RootNamespace>
+    <ProjectGuid>{69c85913-a7f6-4b3d-91c8-c2c523f9e65b}</ProjectGuid>
+    <RootNamespace>kmzi3client</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -127,13 +127,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\kmzi_2.2\kmzi_2.2\RipeMD160_Hash.cpp" />
-    <ClCompile Include="kmzi_3.cpp" />
+    <ClCompile Include="kmzi_3_client.cpp" />
+    <ClCompile Include="SafeConnection.cpp" />
     <ClCompile Include="ShnorDigitalSignature.cpp" />
     <ClCompile Include="TCP.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\kmzi_2.2\kmzi_2.2\RipeMD160_Hash.h" />
+    <ClInclude Include="SafeConnection.h" />
     <ClInclude Include="ShnorDigitalSignature.h" />
     <ClInclude Include="TCP.h" />
   </ItemGroup>

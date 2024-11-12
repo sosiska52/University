@@ -1,5 +1,4 @@
 #pragma once
-#include "RipeMD160_Hash.h"
 #include <iostream>
 #include <vector>
 #include <stdexcept>
@@ -13,16 +12,17 @@
 class ShnorDigitalSignature
 {
 public:
+	unsigned long long p; //public
+	unsigned long long q; //public
+	unsigned long long a; //public
+	unsigned long long v; //public key
+
 	ShnorDigitalSignature();
 	std::pair <unsigned long long, unsigned long long> sign(const std::string& message);
 	bool verify(std::pair<unsigned long long, unsigned long long> signature, const std::string& massage);
 private:
-	unsigned long long p;
-	unsigned long long q;
-	unsigned long long g;
 	//RIPEMD160 hashFunc;
-	unsigned long long x;
-	unsigned long long y;
+	unsigned long long s; //secret key
 
 	long long randomInRange(int min, int max);
 	bool isPrime(int num);

@@ -15,27 +15,27 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="kmzi_3.cpp">
+    <ClCompile Include="kmzi_3_client.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\kmzi_2.2\kmzi_2.2\RipeMD160_Hash.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="TCP.cpp">
+    <ClCompile Include="SafeConnection.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="ShnorDigitalSignature.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="TCP.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\kmzi_2.2\kmzi_2.2\RipeMD160_Hash.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="TCP.h">
+    <ClInclude Include="SafeConnection.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="ShnorDigitalSignature.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="TCP.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

@@ -8,9 +8,12 @@
 #pragma comment(lib, "Ws2_32.lib")
 class TCPServer {
 public:
-	TCPServer(const char* ipAddr, int port);
+	void initialise(const char* ipAddr, int port);
 	~TCPServer();
 	bool connectClient();
+	bool sendMessage(const std::string& message);
+	bool receiveMessage(std::string& message);
+	void abbort();
 private:
 	WSADATA wsData;
 	SOCKET ServSock;
@@ -24,9 +27,12 @@ private:
 
 class TCPClient {
 public:
-	TCPClient();
+	void initialise();
 	~TCPClient();
 	bool connectServer(const char* ipAddr, int port);
+	bool sendMessage(const std::string& message);
+	bool receiveMessage(std::string& message);
+	void abbort();
 private:
 	WSADATA wsData;
 	SOCKET ClientSock;
