@@ -5,14 +5,19 @@ class SimpleNN:
     def __init__(self):
         self.X1 = np.zeros(2)
         self.X2 = np.zeros(2)
-        self.W1 = np.random.randn(2, 2) * 0.01
-        self.W2 = np.random.randn(2, 1) * 0.01
+        self.W1 = np.random.rand(2, 2)
+        self.W2 = np.random.rand(2, 1)
         self.weighted1 = np.zeros((2, 2))
         self.weighted2 = np.zeros((2, 1))
         self.T1 = np.random.rand(2)
         self.T2 = np.random.rand(1)
         self.alp: float = 0.05
         self.errors_for_chart = np.array([])
+
+        '''self.W1 = ([1, 1], [1, 1])
+        self.W2 = ([1], [-1])
+        self.T1 = ([0.5, 1.5])
+        self.T2 = ([1.5])'''
 
     def forward_prop(self, image):
         self.X1 = image
@@ -22,7 +27,7 @@ class SimpleNN:
         return self.sigmoid_func(self.weighted2)
 
     def sigmoid_func(self, weighted_sum):
-        return 1 / (1 +  np.exp(-weighted_sum))
+        return 1 / (1 +  np.exp(-weighted_sum * 10))
 
     def sigmoid_derivative(self, weighted_sum):
         sig = self.sigmoid_func(weighted_sum)
@@ -41,15 +46,10 @@ class SimpleNN:
     def train_online(self, train_data, train_e, test_data, test_e):
         max_epoch: int = 1000
 
-        self.W1 = ([1,-1], [1,-1])
-        self.W2 = ([1], [1])
-        self.T1 = ([0.5,-1.5])
-        self.T2 = ([1.5])
-
         for epoch in range(max_epoch):
             for ind, image in enumerate(train_data):
                 prediction = self.forward_prop(image)
-                #self.back_prop(prediction, train_e[ind])
+                self.back_prop(prediction, train_e[ind])
             if self.test(test_data, test_e):
                 print(f"Network trained in {epoch + 1} epoches")
                 self.draw_error_graph()
