@@ -31,11 +31,12 @@ if __name__ == '__main__':
     test_data = make_matrix(100, 150)
     train_e = make_array(0, 100)
     test_e = make_array(100, 150)
+    print(train_e)
 
     start_time = time.time()
     network = SimpleNN(2,1)
     network.adaptive_flag = True
     #network.train_online(train_data,train_e, test_data, test_e)
-    network.train_batch(train_data, train_e, test_data, test_e, 2)
+    #network.train_batch(train_data, train_e, test_data, test_e, 2)
     end_time = time.time()
     print(f"Time: {end_time - start_time}")
