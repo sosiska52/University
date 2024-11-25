@@ -14,10 +14,10 @@ class SimpleNN:
         self.alp: float = 0.05
         self.errors_for_chart = np.array([])
 
-        '''self.W1 = ([1, 1], [1, 1])
+        self.W1 = ([1, 1], [1, 1])
         self.W2 = ([1], [-1])
         self.T1 = ([0.5, 1.5])
-        self.T2 = ([1.5])'''
+        self.T2 = ([1.5])
 
     def forward_prop(self, image):
         self.X1 = image
@@ -64,7 +64,7 @@ class SimpleNN:
         print(self.T2)
         self.draw_error_graph()
 
-    def test(self, test_data, test_e) -> bool:
+    '''def test(self, test_data, test_e) -> bool:
         mse: float = 0
         for ind, image in enumerate(test_data):
             prediction = self.forward_prop(image)
@@ -72,7 +72,19 @@ class SimpleNN:
             print(str(image) + " - " + str(test_e[ind]) + " | " + str(prediction))
         print(f"MSE: {mse}")
         self.errors_for_chart = np.append(self.errors_for_chart, mse)
-        return mse < 0.01
+        return mse < 0.01'''
+
+    def test(self, test_data, test_e) -> bool:
+        counter: float = 0
+        for ind, image in enumerate(test_data):
+            prediction = self.forward_prop(image)
+            if (prediction >= 0.5 and test_e[ind] == 1) or (prediction < 0.5 and test_e[ind] == 0):
+                counter += 1
+            print(str(image) + " - " + str(test_e[ind]) + " | " + str(prediction))
+        right_percent = counter / len(test_e) * 100
+        print(f"Percentage: {right_percent}")
+        self.errors_for_chart = np.append(self.errors_for_chart, right_percent)
+        return right_percent > 95
 
     def draw_error_graph(self):
         x = np.arange(len(self.errors_for_chart))
