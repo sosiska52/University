@@ -57,3 +57,4 @@
 3 year/PBZ/src/PBZ_7/myapp/__pycache__/models.cpython-312.pyc
 3 year/PBZ/src/PBZ_7/myapp/admin.py
 3 year/PBZ/src/PBZ_7/myapp/models.py
+*.ipch
