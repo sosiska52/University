@@ -1,5 +1,0 @@
-﻿  aipo_1_client.cpp
-C:\Users\Mikita\source\repos\aipo_1_client\aipo_1_client\aipo_1_client.cpp(70,43): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
-C:\Users\Mikita\source\repos\aipo_1_client\aipo_1_client\aipo_1_client.cpp(79,68): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
-C:\Users\Mikita\source\repos\aipo_1_client\aipo_1_client\aipo_1_client.cpp(88,64): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
-  aipo_1_client.vcxproj -> C:\Users\Mikita\source\repos\aipo_1_client\aipo_1_client\x64\Debug\aipo_1_client.exe

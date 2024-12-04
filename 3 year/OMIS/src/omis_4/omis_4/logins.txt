@@ -1,5 +1,0 @@
-﻿admin	nikita
-login	log
-sosiska	nik
-test	test
-privet	Nikita
