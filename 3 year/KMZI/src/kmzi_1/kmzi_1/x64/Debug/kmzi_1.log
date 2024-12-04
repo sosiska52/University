@@ -1,0 +1,9 @@
+﻿  Crypt.cpp
+  kmzi_1.cpp
+D:\GitHubRepo\University\3 year\KMZI\src\kmzi_1\kmzi_1\kmzi_1.cpp(59,40): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+D:\GitHubRepo\University\3 year\KMZI\src\kmzi_1\kmzi_1\kmzi_1.cpp(130,81): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+D:\GitHubRepo\University\3 year\KMZI\src\kmzi_1\kmzi_1\kmzi_1.cpp(164,99): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+D:\GitHubRepo\University\3 year\KMZI\src\kmzi_1\kmzi_1\kmzi_1.cpp(216,41): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+  Создание кода...
+     Создается библиотека D:\GitHubRepo\University\3 year\KMZI\src\kmzi_1\x64\Debug\kmzi_1.lib и объект D:\GitHubRepo\University\3 year\KMZI\src\kmzi_1\x64\Debug\kmzi_1.exp
+  kmzi_1.vcxproj -> D:\GitHubRepo\University\3 year\KMZI\src\kmzi_1\x64\Debug\kmzi_1.exe
