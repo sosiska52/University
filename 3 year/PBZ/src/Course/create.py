@@ -42,7 +42,7 @@ def create_tables():
             Дата_рождения DATE,
             Гражданство TEXT,
             ID_дела INTEGER,
-            FOREIGN KEY (ID_дела) REFERENCES Дело(ID_дела)
+            FOREIGN KEY (ID_дела) REFERENCES Дело(ID_дела) ON DELETE CASCADE
         )
     ''')
 
@@ -63,7 +63,7 @@ def create_tables():
             ФИО TEXT,
             Контактный_номер TEXT,
             ID_дела INTEGER,
-            FOREIGN KEY (ID_дела) REFERENCES Дело(ID_дела)
+            FOREIGN KEY (ID_дела) REFERENCES Дело(ID_дела) ON DELETE CASCADE
         )
     ''')
 
@@ -73,7 +73,7 @@ def create_tables():
         (1, 'Ковалёва Ольга Ивановна', '+375291234567', 1),
         (2, 'Сидоров Дмитрий Васильевич', '+375291234568', 2),
         (3, 'Федорова Наталья Сергеевна', '+375291234569', 3),
-        (4, 'Никитина Elena Петровна', '+375291234570', 4),
+        (4, 'Никитина Елена Петровна', '+375291234570', 4),
         (5, 'Морозов Сергей Александрович', '+375291234571', 5)
     ''')
 
@@ -84,7 +84,7 @@ def create_tables():
             ФИО TEXT,
             Контактный_номер TEXT,
             ID_дела INTEGER,
-            FOREIGN KEY (ID_дела) REFERENCES Дело(ID_дела)
+            FOREIGN KEY (ID_дела) REFERENCES Дело(ID_дела) ON DELETE CASCADE
         )
     ''')
 
@@ -105,7 +105,7 @@ def create_tables():
             ФИО TEXT,
             Судебный_участок TEXT,
             ID_дела INTEGER,
-            FOREIGN KEY (ID_дела) REFERENCES Дело(ID_дела)
+            FOREIGN KEY (ID_дела) REFERENCES Дело(ID_дела) ON DELETE CASCADE
         )
     ''')
 

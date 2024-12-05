@@ -9,13 +9,14 @@ class DatabaseApp:
     def __init__(self, master, connection_params):
         self.master = master
         self.connection_params = connection_params
-        self.master.title("БД")
+        self.master.title("Суд")
 
         self.notebook = ttk.Notebook(master)
         self.notebook.pack(expand=True, fill='both')
 
         # Connect to the database
         self.conn = sqlite3.connect(**connection_params)
+        self.conn.execute("PRAGMA foreign_keys = ON;")  # Включаем поддержку внешних ключей
         self.cursor = self.conn.cursor()
 
         # Fetch table names
@@ -107,12 +108,19 @@ class DatabaseApp:
         # Function to insert the new row into the table
         def insert_row():
             values = [entry.get() for entry in entry_widgets]
+            if any(value.strip() == "" for value in values):  # Check for empty fields
+                messagebox.showwarning("Предупреждение", "Все поля должны быть заполнены.")
+                return
+
             placeholders = ', '.join(['?' for _ in values])
             query = f"INSERT INTO {table_name} VALUES ({placeholders});"
-            self.cursor.execute(query, values)
-            self.conn.commit()
-            self.populate_treeview(tree, table_name)
-            add_dialog.destroy()
+            try:
+                self.cursor.execute(query, values)
+                self.conn.commit()
+                self.populate_treeview(tree, table_name)
+                add_dialog.destroy()
+            except sqlite3.Error as e:
+                messagebox.showerror("Ошибка", f"Ошибка при добавлении строки: {e}")
 
         # Button to submit the new row
         submit_button = tk.Button(add_dialog, text="Подтвердить", command=insert_row)
@@ -137,12 +145,13 @@ class DatabaseApp:
         where_clause = ' AND '.join([f"{column} = ?" for column in tree['columns']])
 
         # Execute the DELETE query
-        query = f"DELETE FROM {table_name} WHERE {where_clause};"
-        self.cursor.execute(query, values)
-        self.conn.commit()
-
-        # Update the treeview
-        self.populate_treeview(tree, table_name)
+        try:
+            query = f"DELETE FROM {table_name} WHERE {where_clause};"
+            self.cursor.execute(query, values)
+            self.conn.commit()
+            self.populate_treeview(tree, table_name)
+        except sqlite3.Error as e:
+            messagebox.showerror("Ошибка", f"Ошибка при удалении строки: {e}")
 
     def edit_row(self, tree, table_name):
         # Get the selected item in the treeview
@@ -175,13 +184,20 @@ class DatabaseApp:
         # Function to update the row in the table
         def update_row():
             new_values = [entry.get() for entry in entry_widgets]
+            if any(value.strip() == "" for value in new_values):  # Check for empty fields
+                messagebox.showwarning("Предупреждение", "Все поля должны быть заполнены.")
+                return
+
             set_clause = ', '.join([f"{column} = ?" for column in columns])
             where_clause = ' AND '.join([f"{column} = ?" for column in columns])
             query = f"UPDATE {table_name} SET {set_clause} WHERE {where_clause};"
-            self.cursor.execute(query, new_values + values)
-            self.conn.commit()
-            self.populate_treeview(tree, table_name)
-            edit_dialog.destroy()
+            try:
+                self.cursor.execute(query, new_values + values)
+                self.conn.commit()
+                self.populate_treeview(tree, table_name)
+                edit_dialog.destroy()
+            except sqlite3.Error as e:
+                messagebox.showerror("Ошибка", f"Ошибка при обновлении строки: {e}")
 
         # Button to submit the edited row
         submit_button = tk.Button(edit_dialog, text="Подтвердить", command=update_row)
@@ -201,7 +217,6 @@ class DatabaseApp:
             tree.insert('', 'end', values=row)
 
         tree.heading(column, command=lambda: self.sort_treeview(tree, table_name, column, not reverse))
-
 
     def search_treeview(self, tree, search_term):
         # Iterate over each row in the treeview

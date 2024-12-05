@@ -1,96 +1,76 @@
 import numpy as np
-import matplotlib.pyplot as plt
 
-class SimpleNN:
+import MakeDataSet
+
+
+class NeuralNetwork:
     def __init__(self):
-        self.X1 = np.zeros(2)
-        self.X2 = np.zeros(4)
-        self.W1 = np.random.rand(2, 4)
-        self.W2 = np.random.rand(4, 1)
-        self.weighted1 = np.zeros((2, 4))
-        self.weighted2 = np.zeros((4, 1))
-        self.T1 = np.random.rand(4)
-        self.T2 = np.random.rand(1)
-        self.alp: float = 0.05
-        self.errors_for_chart = np.array([])
+        # Инициализация весов
+        self.input_size = 2
+        self.hidden_size = 2
+        self.output_size = 1
 
-        self.W1 = ([1, 1], [1, 1])
-        self.W2 = ([1], [-1])
-        self.T1 = ([0.5, 1.5])
-        self.T2 = ([1.5])
+        self.weights_input_hidden = np.random.rand(self.input_size, self.hidden_size)
+        self.weights_hidden_output = np.random.rand(self.hidden_size, self.output_size)
 
-    def forward_prop(self, image):
-        self.X1 = image
-        self.weighted1 = np.dot(image, self.W1) - self.T1
-        self.X2 = self.sigmoid_func(self.weighted1)
-        self.weighted2 = np.dot(self.X2, self.W2) - self.T2
-        return self.sigmoid_func(self.weighted2)
-        #return self.threshold_func(self.weighted2)
+    def sigmoid(self, x):
+        return 1 / (1 + np.exp(-x))
 
-    def sigmoid_func(self, weighted_sum):
-        return 1 / (1 +  np.exp(-weighted_sum))
+    def sigmoid_derivative(self, x):
+        return x * (1 - x)
 
-    def sigmoid_derivative(self, weighted_sum):
-        sig = self.sigmoid_func(weighted_sum)
+    def sigmoid_derivative1(self, weighted_sum):
+        sig = self.sigmoid(weighted_sum)
         return sig * (1 - sig)
 
-    def threshold_func(self, weighted_sum):
-        return 1 if weighted_sum > 0 else 0
+    def forward(self, X):
+        # Прямое распространение
+        self.hidden_input = np.dot(X, self.weights_input_hidden)
+        self.hidden_output = self.sigmoid(self.hidden_input)
 
-    def back_prop(self,prediction, expected_output):
-        output_error = prediction - expected_output
-        d_output = output_error * self.sigmoid_derivative(self.weighted2)
-        #d_output = np.array([output_error])
-        self.W2 -= self.alp * np.dot(self.X2.reshape(-1,1), d_output.reshape(1,-1))
-        self.T2 += self.alp * d_output
+        self.final_input = np.dot(self.hidden_output, self.weights_hidden_output)
+        self.final_output = self.sigmoid(self.final_input)
 
-        hidden_error = np.dot(d_output, self.W2.T) * self.sigmoid_derivative(self.weighted1)
-        self.W1 -= self.alp * np.dot(self.X1.reshape(-1, 1), hidden_error.reshape(1, -1))
-        self.T1 += self.alp * hidden_error
+        return self.final_output
 
-    def train_online(self, train_data, train_e, test_data, test_e):
-        max_epoch: int = 100
+    def backward(self, X, y, output):
+        # Обратное распространение
+        output_error = y - output
+        output_delta = output_error * self.sigmoid_derivative(output)
 
-        for epoch in range(max_epoch):
-            for ind, image in enumerate(train_data):
-                prediction = self.forward_prop(image)
-                self.back_prop(prediction, train_e[ind])
-            if self.test(test_data, test_e):
-                print(f"Network trained in {epoch + 1} epoches")
-                break
-        print(self.W1)
-        print(self.T1)
-        print(self.W2)
-        print(self.T2)
-        self.draw_error_graph()
+        hidden_error = output_delta.dot(self.weights_hidden_output.T)
+        hidden_delta = hidden_error * self.sigmoid_derivative(self.hidden_output)
 
-    '''def test(self, test_data, test_e) -> bool:
-        mse: float = 0
-        for ind, image in enumerate(test_data):
-            prediction = self.forward_prop(image)
-            mse += 0.5 * (prediction - test_e[ind]) ** 2
-            print(str(image) + " - " + str(test_e[ind]) + " | " + str(prediction))
-        print(f"MSE: {mse}")
-        self.errors_for_chart = np.append(self.errors_for_chart, mse)
-        return mse < 0.01'''
+        # Обновление весов
+        self.weights_hidden_output += self.hidden_output.T.dot(output_delta)
+        self.weights_input_hidden += X.T.dot(hidden_delta)
 
-    def test(self, test_data, test_e) -> bool:
-        counter: float = 0
-        for ind, image in enumerate(test_data):
-            prediction = self.forward_prop(image)
-            if (prediction >= 0.5 and test_e[ind] == 1) or (prediction < 0.5 and test_e[ind] == 0):
-                counter += 1
-            print(str(image) + " - " + str(test_e[ind]) + " | " + str(prediction))
-        right_percent = counter / len(test_e) * 100
-        print(f"Percentage: {right_percent}")
-        self.errors_for_chart = np.append(self.errors_for_chart, right_percent)
-        return right_percent > 95
+    def train(self, X, y, epochs=1000):
+        for _ in range(epochs):
+            output = self.forward(X)
+            self.backward(X, y, output)
 
-    def draw_error_graph(self):
-        x = np.arange(len(self.errors_for_chart))
-        plt.figure(figsize=(len(self.errors_for_chart), 5))
-        plt.plot(x, self.errors_for_chart)
-        plt.xlabel('Epoch')
-        plt.ylabel('Errors')
-        plt.grid()
-        plt.show()
+
+
+coordinates, values = MakeDataSet.generate_clusters()
+train_data = coordinates[0:150]
+test_data = coordinates[150:200]
+train_e = values[0:150]
+
+X = np.array([[0, 0],
+              [0, 1],
+              [1, 0],
+              [1, 1]])
+
+y = np.array([[0], [1], [1], [0]])
+
+# Создание и обучение нейронной сети
+nn = NeuralNetwork()
+temp = 0
+print(nn.sigmoid_derivative(temp))
+print(nn.sigmoid_derivative1(temp))
+nn.train(X, y)
+
+# Проверка результатов
+for i in range(len(X)):
+    print(f"Input: {X[i]} - Predicted Output: {nn.forward(X[i].reshape(1, -1))}")
