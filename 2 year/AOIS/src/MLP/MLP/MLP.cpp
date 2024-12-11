@@ -57,6 +57,7 @@ void menu() {
         std::cout << "2. Load weights\n";
         std::cout << "3. Save weights\n";
         std::cout << "4. Test\n";
+        std::cout << "5. Exit\n";
         std::cin >> choise;
         switch (choise)
         {
@@ -73,6 +74,8 @@ void menu() {
         case 4:
             network.test(testBatch);
             break;
+        case 5:
+            return;
         default:
             system("cls");
             break;
