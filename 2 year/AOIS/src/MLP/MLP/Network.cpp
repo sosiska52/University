@@ -168,17 +168,39 @@ void Network::train(std::vector<Cifar_data>& images) {
 }
 
 void Network::test(std::vector<Mnist_data>& images) {
-	double error = 0;
-	for (int i = 0; i < images.size(); i++) {
-		givePicture(images[i]);
+	int TP[10] = { 0 }; // True Positives для классов 0-9
+	int FP[10] = { 0 }; // False Positives для классов 0-9
+	int FN[10] = { 0 }; // False Negatives для классов 0-9
+
+	for (const auto& image : images) {
+		givePicture(image);
 		int result = predict();
-		if (result != images[i].label){
-			std::cout << i << "\n";
-			error += 1.;
+
+		if (result == image.label) {
+			TP[result]++;
+		}
+		else {
+			FP[result]++;
+			FN[image.label]++;
 		}
 	}
-	double errPercent = error / images.size() * 100;
-	std::cout << "Test\nError percent: " << errPercent << "\n";
+
+	double totalF1 = 0.0;
+	int validClasses = 0;
+
+	for (int i = 0; i < 10; i++) {
+		if (TP[i] + FP[i] > 0 && TP[i] + FN[i] > 0) {
+			double precision = static_cast<double>(TP[i]) / (TP[i] + FP[i]);
+			double recall = static_cast<double>(TP[i]) / (TP[i] + FN[i]);
+			double f1 = 2 * (precision * recall) / (precision + recall);
+			totalF1 += f1;
+			validClasses++;
+		}
+	}
+
+	double macroF1 = validClasses > 0 ? totalF1 / validClasses : 0.0;
+
+	std::cout << "Test\nMacro F1: " << macroF1 << "\n";
 }
 
 void Network::test(std::vector<Cifar_data>& images) {
