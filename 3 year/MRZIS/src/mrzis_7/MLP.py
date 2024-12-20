@@ -13,6 +13,8 @@ class Network:
 
         self.alp = 0.01
         self.dropout_rate = 0.01
+        self.lamb_1 = 0.00001
+        self.lamb_2 = 0.0001
 
         self.in_hid_weight = np.random.uniform(-1, 1, (self.in_size, self.hid_size))
         self.hid_out_weight = np.random.uniform(-1, 1,(self.hid_size, self.out_size))
@@ -35,7 +37,7 @@ class Network:
         self.output_layer = np.dot(self.hidden_layer, self.hid_out_weight) - self.out_bias
         return self.output_layer
 
-    def backward_prop(self, error, dropout_mask):
+    """def backward_prop(self, error, dropout_mask):
         hidden_error = np.dot(error, self.hid_out_weight.T) * self.sigmoid_derivative(self.hidden_layer)
         hidden_error *= dropout_mask
 
@@ -43,6 +45,22 @@ class Network:
         self.out_bias += self.alp * error
 
         self.in_hid_weight -= self.alp * np.dot(self.input_layer.reshape(-1, 1), hidden_error.reshape(1, -1))
+        self.hid_bias += self.alp * hidden_error"""
+
+    def backward_prop(self, error, dropout_mask):
+        hidden_error = np.dot(error, self.hid_out_weight.T) * self.sigmoid_derivative(self.hidden_layer)
+        hidden_error *= dropout_mask
+
+        l1_hid_out = self.lamb_1 * np.sign(self.hid_out_weight)
+        l2_hid_out = self.lamb_2 * self.hid_out_weight
+
+        self.hid_out_weight -= self.alp * (np.dot(self.hidden_layer.reshape(-1, 1), error.reshape(1, -1)) + l1_hid_out + l2_hid_out)
+        self.out_bias += self.alp * error
+
+        l1_in_hid = self.lamb_1 * np.sign(self.in_hid_weight)
+        l2_in_hid = self.lamb_2 * self.in_hid_weight
+
+        self.in_hid_weight -= self.alp * (np.dot(self.input_layer.reshape(-1, 1), hidden_error.reshape(1, -1)) + l1_in_hid + l2_in_hid)
         self.hid_bias += self.alp * hidden_error
 
     def train_online(self, train_data, train_e, test_data, test_e):
@@ -57,7 +75,8 @@ class Network:
                 break
         print(f"Network trained in {epoch + 1} epochs")
 
-    def test(self, test_data, test_e) -> bool:
+    #MSE
+    """def test(self, test_data, test_e) -> bool:
         mse = 0
         dropout_mask = np.ones(self.hid_size)
         for ind, image in enumerate(test_data):
@@ -66,7 +85,20 @@ class Network:
             print(f"{test_e[ind]} | {prediction}")
         print(f"MSE_test: {mse}")
         self.errors_for_chart.append(mse)
-        return mse < 0.01
+        return mse < 0.01"""
+
+    #MAE
+    def test(self, test_data, test_e) -> bool:
+        mae = 0
+        dropout_mask = np.ones(self.hid_size)
+        for ind, image in enumerate(test_data):
+            prediction = self.forward_prop(image, dropout_mask)
+            mae += np.sum(np.abs(prediction - test_e[ind]))
+            print(f"{test_e[ind]} | {prediction}")
+        mae /= len(test_data)
+        print(f"MAE_test: {mae}")
+        self.errors_for_chart.append(mae)
+        return mae < 0.001
 
     def show_result_plot(self, test_data, test_e):
         x_values = np.arange(0, 48.9, 0.1)
