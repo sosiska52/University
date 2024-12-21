@@ -52,13 +52,13 @@ class Network:
         hidden_error *= dropout_mask
 
         l1_hid_out = self.lamb_1 * np.sign(self.hid_out_weight)
-        l2_hid_out = self.lamb_2 * self.hid_out_weight
+        l2_hid_out = self.lamb_2 * self.hid_out_weight * 2
 
         self.hid_out_weight -= self.alp * (np.dot(self.hidden_layer.reshape(-1, 1), error.reshape(1, -1)) + l1_hid_out + l2_hid_out)
         self.out_bias += self.alp * error
 
         l1_in_hid = self.lamb_1 * np.sign(self.in_hid_weight)
-        l2_in_hid = self.lamb_2 * self.in_hid_weight
+        l2_in_hid = self.lamb_2 * self.in_hid_weight * 2
 
         self.in_hid_weight -= self.alp * (np.dot(self.input_layer.reshape(-1, 1), hidden_error.reshape(1, -1)) + l1_in_hid + l2_in_hid)
         self.hid_bias += self.alp * hidden_error

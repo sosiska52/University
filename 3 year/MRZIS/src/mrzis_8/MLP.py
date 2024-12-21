@@ -18,9 +18,6 @@ class MLP(nn.Module):
         return x
 
     def train_step(self, optimizer, criterion, inputs, targets):
-        """
-        Выполняет один шаг обучения (обратное распространение + обновление весов).
-        """
         # Обнуляем градиенты
         optimizer.zero_grad()
 
@@ -30,7 +27,6 @@ class MLP(nn.Module):
         # Вычисляем ошибку
         loss = criterion(outputs, targets)
 
-        # Обратное распространение
         loss.backward()
 
         # Обновляем веса
@@ -39,8 +35,8 @@ class MLP(nn.Module):
         return loss.item()
 
     def train_model(self, train_loader, optimizer, criterion, num_epochs):
-        self.train()  # Переводим модель в режим обучения
-        epoch_losses = []  # Список для хранения значений потерь на каждой эпохе
+        self.train()
+        epoch_losses = []
         for epoch in range(num_epochs):
             epoch_loss = 0
             for inputs, targets in train_loader:
@@ -50,25 +46,20 @@ class MLP(nn.Module):
             epoch_losses.append(avg_epoch_loss)
             print(f"Epoch {epoch + 1}/{num_epochs}, Loss: {avg_epoch_loss:.4f}")
 
-        # Возвращаем список потерь для визуализации
         return epoch_losses
 
     def test_model(self, test_loader, criterion):
-        """
-        Оценивает модель на тестовом наборе данных.
-        """
-        self.eval()  # Переводим модель в режим оценки
+        self.eval()
         test_loss = 0
         correct = 0
         total = 0
 
-        with torch.no_grad():  # Отключаем расчет градиентов
+        with torch.no_grad():
             for inputs, targets in test_loader:
                 outputs = self(inputs)
                 loss = criterion(outputs, targets)
                 test_loss += loss.item()
 
-                # Предсказание классов
                 predicted = (outputs > 0.5).float()
                 correct += (predicted == targets).sum().item()
                 total += targets.size(0)
