@@ -53,6 +53,7 @@ class Application(tk.Tk):
         word_menu.add_command(label="Добавить слово", command=self.add_word)
         word_menu.add_command(label="Удалить выбранное", command=self.delete_word)
         word_menu.add_command(label="Сгенерировать формы", command=self.generate_forms)
+        word_menu.add_command(label="Расстояние Левенштейна", command=self.generate_distance)
         menu_bar.add_cascade(label="Слово", menu=word_menu)
 
         # "Поиск"
@@ -71,6 +72,36 @@ class Application(tk.Tk):
         self.grid_columnconfigure(0, weight=3, uniform="cols")
         self.grid_columnconfigure(1, weight=1, uniform="cols")
         self.grid_rowconfigure(0, weight=1)
+
+    def generate_distance(self):
+        selected_index = self.word_listbox.curselection()
+        if selected_index:
+            selected_word = self.words[selected_index[0]].word
+            self.word_info_text.delete(1.0, tk.END)
+
+            for word_object in self.words:
+                if word_object.word != selected_word:
+                    distance = self.levenshtein_distance(selected_word, word_object.word)
+                    self.word_info_text.insert(tk.END, f"Расстояние до слова '{word_object.word}' - {distance}\n")
+
+    def levenshtein_distance(self, s1, s2):
+        if len(s1) < len(s2):
+            return self.levenshtein_distance(s2, s1)
+
+        if len(s2) == 0:
+            return len(s1)
+
+        previous_row = range(len(s2) + 1)
+        for i, c1 in enumerate(s1):
+            current_row = [i + 1]
+            for j, c2 in enumerate(s2):
+                insertions = previous_row[j + 1] + 1
+                deletions = current_row[j] + 1
+                substitutions = previous_row[j] + (c1 != c2)
+                current_row.append(min(insertions, deletions, substitutions))
+            previous_row = current_row
+
+        return previous_row[-1]
 
     def search_word(self):
         substring = simpledialog.askstring("Поиск по подстроке", "Введите подстроку:").strip()
