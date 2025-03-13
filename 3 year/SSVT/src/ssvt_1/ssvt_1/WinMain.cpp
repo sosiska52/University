@@ -102,6 +102,10 @@ void ReadKeyboard() {
         std::cout << "\n";
     }
 
+    if (pressedKeys.size() >= 3) {
+        system("start cmd");
+    }
+
     memcpy(prevKeyStates, keyStates, sizeof(keyStates));
 }
 
