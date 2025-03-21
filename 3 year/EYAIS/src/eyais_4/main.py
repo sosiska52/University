@@ -7,6 +7,7 @@ from natasha import (
     NewsEmbedding,
     NewsMorphTagger,
     NewsSyntaxParser,
+    NewsNERTagger,
     Doc
 )
 
@@ -15,7 +16,7 @@ morph_vocab = MorphVocab()
 emb = NewsEmbedding()
 morph_tagger = NewsMorphTagger(emb)
 syntax_parser = NewsSyntaxParser(emb)
-
+ner_tagger = NewsNERTagger(emb)
 
 def translate_feats(feats):
     translations = {
@@ -55,10 +56,20 @@ def analyze_text(text):
     doc.segment(segmenter)
     doc.tag_morph(morph_tagger)
     doc.parse_syntax(syntax_parser)
+    doc.tag_ner(ner_tagger)
 
     result = []
     for sent in doc.sents:
         result.append(f"Предложение: {sent.text}")
+
+        entities = []
+        for span in sent.spans:
+            entities.append(f"Сущность: {span.text} (Тип: {span.type})")
+        if entities:
+            result.append("Именованные сущности:")
+            result.extend(entities)
+
+        result.append("Синтаксический анализ:")
         for token in sent.tokens:
             translated_feats = translate_feats(token.feats)
             translated_rel = translate_rel(token.rel)
@@ -72,6 +83,7 @@ def analyze_text(text):
                 f"Синтаксическая связь: {translated_rel}\n"
             )
             result.append(token_info)
+
         result.append("")
     return "\n".join(result)
 
@@ -96,8 +108,8 @@ def load_file():
 
 
 root = tk.Tk()
-root.title("Синтаксический анализатор текста")
-root.geometry("800x600")
+root.title("Семантико-синтаксический анализатор текста")
+root.geometry("1000x800")
 
 load_button = tk.Button(root, text="Загрузить файл", command=load_file)
 load_button.pack(pady=10)
@@ -107,9 +119,9 @@ original_label.pack()
 original_text = tk.Text(root, height=10, wrap=tk.WORD)
 original_text.pack(fill=tk.BOTH, expand=True, padx=10, pady=5)
 
-result_label = tk.Label(root, text="Результат синтаксического разбора:")
+result_label = tk.Label(root, text="Результат семантико-синтаксического анализа:")
 result_label.pack()
-result_text = tk.Text(root, height=20, wrap=tk.WORD)
+result_text = tk.Text(root, height=30, wrap=tk.WORD)
 result_text.pack(fill=tk.BOTH, expand=True, padx=10, pady=5)
 
 root.mainloop()
