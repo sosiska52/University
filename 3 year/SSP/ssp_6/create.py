@@ -1,4 +1,3 @@
-# [file name]: create.py
 import sqlite3
 
 def create_tables():
@@ -7,15 +6,12 @@ def create_tables():
     connect = sqlite3.connect(connection_params["database"])
     cursor = connect.cursor()
 
-    # Включаем поддержку внешних ключей
     cursor.execute("PRAGMA foreign_keys = ON;")
 
-    # Удаляем старые таблицы, если они существуют
     cursor.execute("DROP TABLE IF EXISTS Посещения;")
     cursor.execute("DROP TABLE IF EXISTS Пациенты;")
     cursor.execute("DROP TABLE IF EXISTS Врачи;")
 
-    # Создаем таблицу Пациенты
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS Пациенты (
             id_patient INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -27,7 +23,6 @@ def create_tables():
         )
     ''')
 
-    # Создаем таблицу Врачи
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS Врачи (
             id_doctor INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -37,7 +32,6 @@ def create_tables():
         )
     ''')
 
-    # Создаем таблицу Посещения с каскадным удалением
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS Посещения (
             id_visit INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -51,7 +45,6 @@ def create_tables():
         )
     ''')
 
-    # Вставляем тестовые данные
     cursor.executemany('''
         INSERT INTO Пациенты (full_name, birth_date, phone, address, medical_card) 
         VALUES (?, ?, ?, ?, ?)''',

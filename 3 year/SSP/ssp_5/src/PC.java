@@ -15,12 +15,18 @@ public class PC {
     }
 
     public double getMaxProcessorSpeed() {
-        return components.stream()
-                .filter(Processor.class::isInstance)
-                .map(Processor.class::cast)
-                .mapToDouble(Processor::getClockSpeed)
-                .max()
-                .orElse(0.0);
+        double maxSpeed = 0.0;
+
+        for (Component component : components) {
+            if (component instanceof Processor) {
+                Processor processor = (Processor) component;
+                if (processor.getClockSpeed() > maxSpeed) {
+                    maxSpeed = processor.getClockSpeed();
+                }
+            }
+        }
+
+        return maxSpeed;
     }
 
     public List<Component> getComponents() {

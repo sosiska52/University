@@ -85,7 +85,7 @@ class ClockApp:
             time.sleep(1)
 
     def trigger_alarm(self):
-        winsound.Beep(1000, 1000)
+        winsound.Beep(1000, 500)
 
 if __name__ == "__main__":
     root = tk.Tk()
