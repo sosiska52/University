@@ -16,7 +16,6 @@ int main() {
 
     std::cout << "DirectDraw initialized successfully!" << std::endl;
 
-    // Получаем информацию о драйвере видеопроцессора
     DDDEVICEIDENTIFIER2 dddi;
     result = lpDD->GetDeviceIdentifier(&dddi, 0);
 
@@ -35,7 +34,6 @@ int main() {
         std::cerr << "Error: Failed to get device identifier!" << std::endl;
     }
 
-    // Освобождаем ресурсы
     if (lpDD) {
         lpDD->Release();
         lpDD = nullptr;

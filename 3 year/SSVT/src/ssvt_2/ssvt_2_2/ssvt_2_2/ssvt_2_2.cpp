@@ -1,166 +1,174 @@
 ﻿#include <windows.h>
 #include <ddraw.h>
-#include <iostream>
+#include <vector>
 #include <cstdlib>
 #include <ctime>
+#include <tchar.h>
 
 #pragma comment(lib, "ddraw.lib")
 #pragma comment(lib, "dxguid.lib")
 
-const int SCREEN_WIDTH = 640;
-const int SCREEN_HEIGHT = 480;
+const int WIDTH = 1920;
+const int HEIGHT = 1080;
+const int STARS = 100;
+const int STAR_LIFETIME = 200;
 
-LPDIRECTDRAW7 lpDD = nullptr;
-LPDIRECTDRAWSURFACE7 lpddsPrimary = nullptr;
-HWND hWnd = nullptr;
+struct Star {
+    int x, y;
+    COLORREF color;
+    int lifetime;
+};
 
-// Функция для генерации случайного цвета
-inline unsigned short RGB16BIT565(int r, int g, int b) {
-    return ((r & 31) << 11) | ((g & 63) << 5) | (b & 31);
+LPDIRECTDRAW7 pDD = nullptr;
+LPDIRECTDRAWSURFACE7 pPrimary = nullptr;
+LPDIRECTDRAWSURFACE7 pBackBuffer = nullptr;
+std::vector<Star> stars;
+
+COLORREF RandomColor() {
+    return RGB(rand() % 256, rand() % 256, rand() % 256);
 }
 
-// Функция для отрисовки пикселя
-inline void PlotPixel(int x, int y, unsigned short color, unsigned short* videoBuffer, int pitch) {
-    videoBuffer[x + y * pitch] = color;
-}
+bool InitDirectDraw(HWND hwnd) {
+    HRESULT hr;
 
-// Функция для отрисовки "звездного неба"
-void DrawStars() {
-    DDSURFACEDESC2 ddsd;
-    memset(&ddsd, 0, sizeof(ddsd));
+    hr = DirectDrawCreateEx(nullptr, (LPVOID*)&pDD, IID_IDirectDraw7, nullptr);
+    if (FAILED(hr)) {
+        MessageBox(hwnd, TEXT("Ошибка создания DirectDraw!"), TEXT("Ошибка"), MB_ICONERROR);
+        return false;
+    }
+
+    hr = pDD->SetCooperativeLevel(hwnd, DDSCL_EXCLUSIVE | DDSCL_FULLSCREEN);
+    if (FAILED(hr)) {
+        MessageBox(hwnd, TEXT("Ошибка установки режима DirectDraw!"), TEXT("Ошибка"), MB_ICONERROR);
+        return false;
+    }
+
+    hr = pDD->SetDisplayMode(WIDTH, HEIGHT, 32, 0, 0);
+    if (FAILED(hr)) {
+        MessageBox(hwnd, TEXT("Ошибка установки разрешения!"), TEXT("Ошибка"), MB_ICONERROR);
+        return false;
+    }
+
+    DDSURFACEDESC2 ddsd = {};
     ddsd.dwSize = sizeof(ddsd);
+    ddsd.dwFlags = DDSD_CAPS | DDSD_BACKBUFFERCOUNT;
+    ddsd.ddsCaps.dwCaps = DDSCAPS_PRIMARYSURFACE | DDSCAPS_FLIP | DDSCAPS_COMPLEX;
+    ddsd.dwBackBufferCount = 1;
 
-    // Блокируем поверхность для рисования
-    if (FAILED(lpddsPrimary->Lock(nullptr, &ddsd, DDLOCK_WAIT, nullptr))) {
-        std::cerr << "Error: Failed to lock surface!" << std::endl;
-        return;
+    hr = pDD->CreateSurface(&ddsd, &pPrimary, nullptr);
+    if (FAILED(hr)) {
+        MessageBox(hwnd, TEXT("Ошибка создания первичной поверхности!"), TEXT("Ошибка"), MB_ICONERROR);
+        return false;
     }
 
-    // Получаем указатель на видеопамять и шаг строки
-    unsigned short* videoBuffer = (unsigned short*)ddsd.lpSurface;
-    int pitch = ddsd.lPitch / 2;
-
-    // Очистка экрана (черный цвет)
-    memset(videoBuffer, 0, SCREEN_HEIGHT * pitch * sizeof(unsigned short));
-
-    // Рисуем случайные "звезды"
-    for (int i = 0; i < 1000; ++i) {
-        int x = rand() % SCREEN_WIDTH;
-        int y = rand() % SCREEN_HEIGHT;
-        int r = rand() % 32;
-        int g = rand() % 64;
-        int b = rand() % 32;
-        PlotPixel(x, y, RGB16BIT565(r, g, b), videoBuffer, pitch);
+    DDSCAPS2 ddscaps = {};
+    ddscaps.dwCaps = DDSCAPS_BACKBUFFER;
+    hr = pPrimary->GetAttachedSurface(&ddscaps, &pBackBuffer);
+    if (FAILED(hr)) {
+        MessageBox(hwnd, TEXT("Ошибка получения заднего буфера!"), TEXT("Ошибка"), MB_ICONERROR);
+        return false;
     }
 
-    // Разблокируем поверхность
-    lpddsPrimary->Unlock(nullptr);
+    return true;
 }
 
-// Функция обработки сообщений окна
-LRESULT CALLBACK WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) {
-    switch (message) {
+void DrawStars() {
+    DDSURFACEDESC2 ddsd = {};
+    ddsd.dwSize = sizeof(ddsd);
+    pBackBuffer->Lock(nullptr, &ddsd, DDLOCK_WAIT, nullptr);
+
+    BYTE* buffer = (BYTE*)ddsd.lpSurface;
+    int pitch = ddsd.lPitch;
+
+    memset(buffer, 0, pitch * HEIGHT);
+
+    for (const auto& star : stars) {
+        BYTE* pixel = buffer + star.y * pitch + star.x * 4;
+        *(COLORREF*)pixel = star.color;
+    }
+
+    pBackBuffer->Unlock(nullptr);
+}
+
+void UpdateStars() {
+    for (auto& star : stars) {
+        star.lifetime--;
+        if (star.lifetime <= 0) {
+            star.x = rand() % WIDTH;
+            star.y = rand() % HEIGHT;
+            star.color = RandomColor();
+            star.lifetime = STAR_LIFETIME;
+        }
+    }
+}
+
+void Render(HWND hwnd) {
+    if (!pPrimary || !pBackBuffer) return;
+
+    UpdateStars();
+
+    DrawStars();
+
+    pPrimary->Flip(nullptr, DDFLIP_WAIT);
+}
+
+void Cleanup() {
+    if (pBackBuffer) pBackBuffer->Release();
+    if (pPrimary) pPrimary->Release();
+    if (pDD) pDD->Release();
+}
+
+LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {
+    switch (uMsg) {
+    case WM_CREATE:
+        srand(static_cast<unsigned int>(time(nullptr)));
+        for (int i = 0; i < STARS; ++i) {
+            stars.push_back({ rand() % WIDTH, rand() % HEIGHT, RandomColor(), rand() % STAR_LIFETIME });
+        }
+
+        if (!InitDirectDraw(hwnd)) {
+            PostQuitMessage(0);
+        }
+        SetTimer(hwnd, 1, 16, nullptr);
+        break;
+    case WM_TIMER:
+        Render(hwnd);
+        break;
+
     case WM_DESTROY:
+        KillTimer(hwnd, 1);
+        Cleanup();
         PostQuitMessage(0);
-        return 0;
+        break;
+
     default:
-        return DefWindowProc(hWnd, message, wParam, lParam);
+        return DefWindowProc(hwnd, uMsg, wParam, lParam);
     }
+    return 0;
 }
 
-// Создание окна
-HWND CreateGameWindow(HINSTANCE hInstance) {
-    WNDCLASSEX wc = { 0 };
-    wc.cbSize = sizeof(WNDCLASSEX);
-    wc.style = CS_HREDRAW | CS_VREDRAW;
+int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
+    const TCHAR* CLASS_NAME = TEXT("StarWindowClass");
+    WNDCLASS wc = {};
     wc.lpfnWndProc = WindowProc;
     wc.hInstance = hInstance;
-    wc.hCursor = LoadCursor(nullptr, IDC_ARROW);
-    wc.hbrBackground = (HBRUSH)GetStockObject(BLACK_BRUSH);
-    wc.lpszClassName = L"GameWindowClass";
+    wc.lpszClassName = CLASS_NAME;
 
-    if (!RegisterClassEx(&wc)) {
-        std::cerr << "Error: Failed to register window class!" << std::endl;
-        return nullptr;
-    }
+    RegisterClass(&wc);
 
-    HWND hWnd = CreateWindowEx(
-        0,
-        L"GameWindowClass",
-        L"DirectDraw Full-Screen Demo",
-        WS_POPUP | WS_VISIBLE,
-        0, 0,
-        SCREEN_WIDTH, SCREEN_HEIGHT,
-        nullptr,
-        nullptr,
-        hInstance,
-        nullptr
+    HWND hwnd = CreateWindowEx(
+        0, CLASS_NAME, TEXT("Stars"), WS_OVERLAPPEDWINDOW,
+        CW_USEDEFAULT, CW_USEDEFAULT, WIDTH, HEIGHT,
+        nullptr, nullptr, hInstance, nullptr
     );
-
-    if (!hWnd) {
-        std::cerr << "Error: Failed to create window!" << std::endl;
-        return nullptr;
+    if (hwnd == nullptr) {
+        return 0;
     }
-
-    return hWnd;
-}
-
-// Основная функция
-int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
-    srand(static_cast<unsigned int>(time(nullptr)));
-
-    hWnd = CreateGameWindow(hInstance);
-    if (!hWnd) return 1;
-
-    if (FAILED(DirectDrawCreateEx(nullptr, (VOID**)&lpDD, IID_IDirectDraw7, nullptr))) {
-        std::cerr << "Error: DirectDrawCreateEx failed!" << std::endl;
-        return 1;
+    ShowWindow(hwnd, SW_MAXIMIZE);
+    MSG msg = {};
+    while (GetMessage(&msg, nullptr, 0, 0)) {
+        TranslateMessage(&msg);
+        DispatchMessage(&msg);
     }
-
-    if (FAILED(lpDD->SetCooperativeLevel(hWnd, DDSCL_FULLSCREEN | DDSCL_EXCLUSIVE))) {
-        std::cerr << "Error: SetCooperativeLevel failed!" << std::endl;
-        return 1;
-    }
-
-    if (FAILED(lpDD->SetDisplayMode(SCREEN_WIDTH, SCREEN_HEIGHT, 16, 0, 0))) {
-        std::cerr << "Error: SetDisplayMode failed!" << std::endl;
-        return 1;
-    }
-
-    DDSURFACEDESC2 ddsd;
-    memset(&ddsd, 0, sizeof(ddsd));
-    ddsd.dwSize = sizeof(ddsd);
-    ddsd.dwFlags = DDSD_CAPS;
-    ddsd.ddsCaps.dwCaps = DDSCAPS_PRIMARYSURFACE;
-
-    if (FAILED(lpDD->CreateSurface(&ddsd, &lpddsPrimary, nullptr))) {
-        std::cerr << "Error: CreateSurface failed!" << std::endl;
-        return 1;
-    }
-
-    MSG msg = { 0 };
-    while (true) {
-        if (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE)) {
-            if (msg.message == WM_QUIT) break;
-            TranslateMessage(&msg);
-            DispatchMessage(&msg);
-        }
-        DrawStars();
-        Sleep(100);
-    }
-
-    // Освобождаем ресурсы
-    if (lpddsPrimary) {
-        lpddsPrimary->Release();
-        lpddsPrimary = nullptr;
-    }
-    if (lpDD) {
-        lpDD->Release();
-        lpDD = nullptr;
-    }
-
-    // Окно ожидания перед закрытием
-    MessageBox(nullptr, L"Нажмите OK, чтобы выйти", L"Программа завершена", MB_OK);
-
     return 0;
 }

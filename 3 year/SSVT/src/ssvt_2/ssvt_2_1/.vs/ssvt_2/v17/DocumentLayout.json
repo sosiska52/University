@@ -1,9 +1,9 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\GitHubRepo\\University\\3 year\\SSVT\\src\\ssvt_2\\",
+  "WorkspaceRootPath": "D:\\GitHubRepo\\University\\3 year\\SSVT\\src\\ssvt_2\\ssvt_2_1\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3D4521A9-9A04-49B4-BDB2-420D98727092}|ssvt_2\\ssvt_2.vcxproj|D:\\GitHubRepo\\University\\3 year\\SSVT\\src\\ssvt_2\\ssvt_2\\ssvt_2.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{3D4521A9-9A04-49B4-BDB2-420D98727092}|ssvt_2\\ssvt_2.vcxproj|D:\\GitHubRepo\\University\\3 year\\SSVT\\src\\ssvt_2\\ssvt_2_1\\ssvt_2\\ssvt_2.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{3D4521A9-9A04-49B4-BDB2-420D98727092}|ssvt_2\\ssvt_2.vcxproj|solutionrelative:ssvt_2\\ssvt_2.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
@@ -20,11 +20,11 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "ssvt_2.cpp",
-              "DocumentMoniker": "D:\\GitHubRepo\\University\\3 year\\SSVT\\src\\ssvt_2\\ssvt_2\\ssvt_2.cpp",
+              "DocumentMoniker": "D:\\GitHubRepo\\University\\3 year\\SSVT\\src\\ssvt_2\\ssvt_2_1\\ssvt_2\\ssvt_2.cpp",
               "RelativeDocumentMoniker": "ssvt_2\\ssvt_2.cpp",
-              "ToolTip": "D:\\GitHubRepo\\University\\3 year\\SSVT\\src\\ssvt_2\\ssvt_2\\ssvt_2.cpp",
+              "ToolTip": "D:\\GitHubRepo\\University\\3 year\\SSVT\\src\\ssvt_2\\ssvt_2_1\\ssvt_2\\ssvt_2.cpp",
               "RelativeToolTip": "ssvt_2\\ssvt_2.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABAAAAAAAAAAAADwvyoAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-03-10T11:24:36.471Z",
               "EditorCaption": ""
