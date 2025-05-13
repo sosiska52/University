@@ -10,7 +10,7 @@
 
 const int WIDTH = 1920;
 const int HEIGHT = 1080;
-const int STARS = 100;
+const int STARS = 5000;
 const int STAR_LIFETIME = 200;
 
 struct Star {
@@ -25,7 +25,8 @@ LPDIRECTDRAWSURFACE7 pBackBuffer = nullptr;
 std::vector<Star> stars;
 
 COLORREF RandomColor() {
-    return RGB(rand() % 256, rand() % 256, rand() % 256);
+    //return RGB(rand() % 256, rand() % 256, rand() % 256);
+    return RGB(0, 0, 255);
 }
 
 bool InitDirectDraw(HWND hwnd) {

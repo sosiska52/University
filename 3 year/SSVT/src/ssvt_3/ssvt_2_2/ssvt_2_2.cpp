@@ -4,7 +4,7 @@
 
 #pragma comment(lib, "ddraw.lib")
 #pragma comment(lib, "dxguid.lib")
-#pragma comment(lib, "msimg32.lib")  // Добавлено для TransparentBlt
+#pragma comment(lib, "msimg32.lib")
 
 LPDIRECTDRAW7 dd = nullptr;
 LPDIRECTDRAWSURFACE7 primarySurface = nullptr;
@@ -32,7 +32,7 @@ LRESULT CALLBACK WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPara
 
         if (hBitmapOverlay) {
             SelectObject(hdcMem, hBitmapOverlay);
-            TransparentBlt(hdc, 0, 0, 800, 600, hdcMem, 0, 0, 800, 600, RGB(255, 255, 255));
+            TransparentBlt(hdc, 0, 0, 800, 600, hdcMem, 0, 0, 800, 600, RGB(255, 0, 0));
         }
 
         DeleteDC(hdcMem);
