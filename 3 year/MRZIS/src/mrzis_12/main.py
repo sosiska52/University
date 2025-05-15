@@ -48,32 +48,27 @@ train_data = TensorDataset(X_train, Y_train)
 train_loader = DataLoader(train_data, batch_size=BATCH_SIZE, shuffle=False)
 
 
-class ManualRNN(nn.Module):
+class SimpleRNN(nn.Module):
     def __init__(self, input_size, hidden_size, output_size):
-        super(ManualRNN, self).__init__()
+        super().__init__()
         self.hidden_size = hidden_size
 
-        # Веса для входного слоя
-        self.Wxh = nn.Parameter(torch.randn(input_size, hidden_size) * 0.01)
-        # Веса для скрытого состояния
-        self.Whh = nn.Parameter(torch.randn(hidden_size, hidden_size) * 0.01)
-        # Веса для выходного слоя
-        self.Why = nn.Parameter(torch.randn(hidden_size, output_size) * 0.01)
-
-        # Смещения
-        self.bh = nn.Parameter(torch.zeros(hidden_size))
-        self.by = nn.Parameter(torch.zeros(output_size))
+        self.W = nn.Parameter(torch.randn(input_size + hidden_size, hidden_size) * 0.01)
+        self.W_out = nn.Parameter(torch.randn(hidden_size, output_size) * 0.01)
+        self.b = nn.Parameter(torch.zeros(hidden_size))
+        self.b_out = nn.Parameter(torch.zeros(output_size))
 
     def forward(self, x):
+        device = x.device
+        batch_size = x.size(0)
 
-        h = torch.zeros(x.size(0), self.hidden_size).to(x.device)
+        h = torch.zeros(batch_size, self.hidden_size).to(device)
 
         for t in range(x.size(1)):
-            xt = x[:, t, :]
-            h = torch.tanh(xt @ self.Wxh + h @ self.Whh + self.bh)
+            combined = torch.cat((x[:, t, :], h), dim=1)
+            h = torch.tanh(combined @ self.W + self.b)
 
-        output = h @ self.Why + self.by
-        return output
+        return h @ self.W_out + self.b_out
 
 
 class PyTorchRNN(nn.Module):
@@ -112,7 +107,6 @@ class LSTMModel(nn.Module):
         return out
 
 
-# Функция для обучения модели
 def train_model(model, train_loader, criterion, optimizer, epochs):
     train_loss = []
     test_loss = []
@@ -145,12 +139,11 @@ def train_model(model, train_loader, criterion, optimizer, epochs):
     return train_loss, test_loss
 
 
-manual_rnn = ManualRNN(1, HIDDEN_SIZE, 1)
+manual_rnn = SimpleRNN(1, HIDDEN_SIZE, 1)
 pytorch_rnn = PyTorchRNN(1, HIDDEN_SIZE, 1)
 gru = GRUModel(1, HIDDEN_SIZE, 1)
 lstm = LSTMModel(1, HIDDEN_SIZE, 1)
 
-# Критерий и оптимизаторы
 criterion = nn.MSELoss()
 manual_optimizer = torch.optim.Adam(manual_rnn.parameters(), lr=LEARNING_RATE)
 rnn_optimizer = torch.optim.Adam(pytorch_rnn.parameters(), lr=LEARNING_RATE)

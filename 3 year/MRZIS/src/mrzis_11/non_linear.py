@@ -1,7 +1,6 @@
 import torch
 import torch.nn as nn
 import torch.optim as optim
-import numpy as np
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
@@ -50,7 +49,12 @@ class CumulativeDeltaOptimizer(optim.Optimizer):
         defaults = dict(lr=lr)
         super(CumulativeDeltaOptimizer, self).__init__(params, defaults)
 
-    def step(self, x, y0, x1, y1, closure=None):
+        # Инициализация состояний для хранения накопленных градиентов
+        for group in self.param_groups:
+            for p in group['params']:
+                self.state[p]['cumulative_grad'] = torch.zeros_like(p.data)
+
+    def step(self, closure=None):
         loss = None
         if closure is not None:
             loss = closure()
@@ -60,13 +64,22 @@ class CumulativeDeltaOptimizer(optim.Optimizer):
                 if p.grad is None:
                     continue
 
-
-                grad = p.grad.data
-
-
-                p.data.add_(-group['lr'] * grad)
+                # Накопление градиентов
+                self.state[p]['cumulative_grad'] += p.grad.data
 
         return loss
+
+    def apply_accumulated_gradients(self):
+        for group in self.param_groups:
+            lr = group['lr']
+            for p in group['params']:
+                if p.grad is None:
+                    continue
+
+                # Применение накопленных градиентов
+                p.data.add_(-lr * self.state[p]['cumulative_grad'])
+                # Сброс накопленных градиентов
+                self.state[p]['cumulative_grad'].zero_()
 
 
 class AutoencoderTrainer:
@@ -76,20 +89,19 @@ class AutoencoderTrainer:
         self.criterion = nn.MSELoss()
 
     def train_step(self, x):
-        # Три фазы преобразования информации
         y0, x1, y1 = self.model(x, return_all=True)
-
-
         reconstruction_loss = self.criterion(x1, x)
         compression_loss = self.criterion(y1, y0)
         total_loss = reconstruction_loss + compression_loss
 
-
         self.optimizer.zero_grad()
         total_loss.backward()
-        self.optimizer.step(x, y0, x1, y1)
+        self.optimizer.step()  # Накопление градиентов
 
         return total_loss.item()
+
+    def apply_gradients(self):
+        self.optimizer.apply_accumulated_gradients()
 
 
 # Параметры
@@ -106,25 +118,22 @@ train_losses = []
 test_losses = []
 
 for epoch in range(epochs):
-    # Обучение
     model.train()
     train_loss = 0
     for batch_x, _ in train_loader:
         train_loss += trainer.train_step(batch_x)
+
+    trainer.apply_gradients()
+
     train_loss /= len(train_loader)
     train_losses.append(train_loss)
 
-    # Тестирование
     model.eval()
     with torch.no_grad():
         _, decoded = model(X_test_tensor)
         test_loss = trainer.criterion(decoded, X_test_tensor).item()
         test_losses.append(test_loss)
 
-    if (epoch + 1) % 10 == 0:
-        print(f"Epoch {epoch + 1}/{epochs}, Train Loss: {train_loss:.4f}, Test Loss: {test_loss:.4f}")
-
-# Визуализация
 plt.figure(figsize=(12, 8))
 plt.plot(train_losses, label='Train Loss')
 plt.plot(test_losses, '--', label='Test Loss')
