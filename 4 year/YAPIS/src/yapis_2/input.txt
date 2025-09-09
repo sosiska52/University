@@ -1,0 +1,11 @@
+// Корректный пример
+ok: array[X] of integer;
+
+// Ошибка 1: длинный идентификатор
+superVeryVeryLongIdentifierNameWhichIsTooLong: array[I] of byte;
+
+// Ошибка 2: слишком длинная строка
+msg: array[V] of char; 'This_string_is_way_too_long_for_the_limit_12345'
+
+// Ошибка 3: незакрытая строка
+badString: array[X] of char; 'Hello world
