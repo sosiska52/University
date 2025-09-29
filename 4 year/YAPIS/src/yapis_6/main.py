@@ -1,3 +1,5 @@
+import numpy as np
+
 def find_cycles(adj_matrix):
     n = len(adj_matrix)
     cycles = []
@@ -16,8 +18,10 @@ def find_cycles(adj_matrix):
 
                     norm_cycle = min(cycle, rev)
 
-                    if norm_cycle not in cycles:
-                        cycles.append(norm_cycle)
+                    vec_cycle = np.array(norm_cycle, dtype=int)
+
+                    if not any(np.array_equal(vec_cycle, c) for c in cycles):
+                        cycles.append(vec_cycle)
 
                 elif u not in visited:
                     dfs(start, u, visited | {u}, path + [u])
@@ -36,6 +40,6 @@ if __name__ == "__main__":
     ]
 
     result = find_cycles(adj)
-    print("Найденные простые циклы:")
+    print("Найденные простые циклы (вектора):")
     for cycle in result:
         print(cycle)
