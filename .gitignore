@@ -59,3 +59,13 @@
 3 year/PBZ/src/PBZ_7/myapp/models.py
 *.ipch
 *.png
+4 year/OIIS/src/oiis_2/.idea/inspectionProfiles/profiles_settings.xml
+4 year/OIIS/src/oiis_2/data/cifar-10-batches-py/batches.meta
+4 year/OIIS/src/oiis_2/data/cifar-10-batches-py/data_batch_1
+4 year/OIIS/src/oiis_2/data/cifar-10-batches-py/data_batch_2
+4 year/OIIS/src/oiis_2/data/cifar-10-batches-py/data_batch_3
+4 year/OIIS/src/oiis_2/data/cifar-10-batches-py/data_batch_4
+4 year/OIIS/src/oiis_2/data/cifar-10-batches-py/data_batch_5
+4 year/OIIS/src/oiis_2/data/cifar-10-batches-py/readme.html
+4 year/OIIS/src/oiis_2/data/cifar-10-batches-py/test_batch
+4 year/OIIS/src/oiis_2/data/cifar-10-python.tar.gz
