@@ -60,12 +60,22 @@ class SpeechApp:
 
             self.label.config(text="Нажмите кнопку и говорите:")
 
+            self.respond_to_command(text)
+
         except sr.UnknownValueError:
             self.label.config(text="Не удалось распознать речь.")
         except sr.RequestError as e:
             self.label.config(text=f"Ошибка сервиса: {e}")
         except Exception as e:
             self.label.config(text=f"Ошибка: {e}")
+
+    def respond_to_command(self, text):
+        if "привет" in text.lower():
+            self.label.config(text="Привет! Как я могу помочь?")
+        elif "стоп" in text.lower():
+            self.label.config(text="А я что машина?")
+        elif "как дела" in text.lower():
+            self.label.config(text="У меня все хорошо, спасибо!")
 
 if __name__ == '__main__':
     root = tk.Tk()
